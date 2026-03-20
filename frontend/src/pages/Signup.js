@@ -1,5 +1,6 @@
 import { createUserWithEmailAndPassword, sendEmailVerification } from "firebase/auth"
-import { useState, useNavigate, } from "react"
+import { useState } from "react"
+import { useNavigate, Link } from "react-router-dom"
 import auth from "../Firebase/FirebaseConfig"
 
 
@@ -12,7 +13,7 @@ function getErrorMessage(code){
     }
 }
 
-function signUp(){
+function SignUp(){
     const[email, setEmail] = useState("");
     const[password, setPassword] = useState("");
     const[confirm, setConfirm] = useState("");
@@ -25,7 +26,7 @@ function signUp(){
         e.preventDefault();
         setError("");
 
-        if(password != confirm){
+        if(password !== confirm){
             setError("Password do not match");
         }
         if(password.length < 6){
@@ -101,4 +102,4 @@ function signUp(){
 
 }
 
-export default signUp
+export default SignUp
