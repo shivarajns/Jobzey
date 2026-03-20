@@ -3,6 +3,8 @@ import AuthProvider from "./Context/AuthContext";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import VerifyEmail from "./pages/VerifyEmail";
+import ProtectedRoute from "./Components/ProtectedRoute";
+import Dashboard from "./pages/Dashboard";
 
 function App() {
   return (
@@ -13,7 +15,11 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
           <Route path="/verify-email" element={<VerifyEmail/>} />
-          <Route path="/dashboard" element={<h2 style={{padding:"2rem"}}>✅ Logged in! Dashboard</h2>} />
+          <Route path="/dashboard" element={
+            <ProtectedRoute>
+              <Dashboard/>
+            </ProtectedRoute>
+          } />
         </Routes>
       </BrowserRouter>
     </AuthProvider>
