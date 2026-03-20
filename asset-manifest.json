@@ -1,0 +1,12 @@
+{
+  "files": {
+    "main.css": "/Jobzey/static/css/main.31d6cfe0.css",
+    "main.js": "/Jobzey/static/js/main.eacdab7e.js",
+    "index.html": "/Jobzey/index.html",
+    "main.eacdab7e.js.map": "/Jobzey/static/js/main.eacdab7e.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.31d6cfe0.css",
+    "static/js/main.eacdab7e.js"
+  ]
+}
