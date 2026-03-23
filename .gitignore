@@ -1,5 +1,7 @@
 # ─── Firebase ────────────────────────────────────────────
 backend/src/main/resources/firebase-service-account.json
+# Spring Boot sensitive config
+backend/src/main/resources/application.properties
 
 # ─── Frontend ────────────────────────────────────────────
 frontend/node_modules/
