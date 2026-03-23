@@ -1,6 +1,8 @@
 # Jobzey 🚀
 A scalable full-stack **job portal platform** connecting **job seekers** and **recruiters**, featuring secure authentication, job management, and advanced search capabilities, built with **Spring Boot** and modern web technologies.
 
+**Live Link:-** https://shivarajns.github.io/Jobzey/
+
 ## 🛠 Tech Stack
 - **Backend:** Spring Boot, Java, Maven  
 - **Database:** MySQL  
