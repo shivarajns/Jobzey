@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/Jobzey/static/css/main.226d0993.css",
-    "main.js": "/Jobzey/static/js/main.4477c36a.js",
+    "main.css": "/Jobzey/static/css/main.0ed698e1.css",
+    "main.js": "/Jobzey/static/js/main.8d178454.js",
     "index.html": "/Jobzey/index.html",
-    "main.226d0993.css.map": "/Jobzey/static/css/main.226d0993.css.map",
-    "main.4477c36a.js.map": "/Jobzey/static/js/main.4477c36a.js.map"
+    "main.0ed698e1.css.map": "/Jobzey/static/css/main.0ed698e1.css.map",
+    "main.8d178454.js.map": "/Jobzey/static/js/main.8d178454.js.map"
   },
   "entrypoints": [
-    "static/css/main.226d0993.css",
-    "static/js/main.4477c36a.js"
+    "static/css/main.0ed698e1.css",
+    "static/js/main.8d178454.js"
   ]
 }
