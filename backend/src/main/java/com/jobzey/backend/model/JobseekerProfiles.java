@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.cglib.core.Local;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -14,14 +13,14 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "jobseeker_profiles")
-public class jobseekerProfiles {
+public class JobseekerProfiles {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @OneToOne
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
     private User userId;
 
     @Column(name = "full_name", length = 125)
@@ -53,7 +52,7 @@ public class jobseekerProfiles {
     private String currCompany;
 
     @Column(name = "experience_years")
-    private String experience;
+    private Integer experience;
 
     @Column(name = "interested_domains")
     private String interestedDomain;
@@ -82,8 +81,12 @@ public class jobseekerProfiles {
         this.createdAt = LocalDateTime.now();
         this.updatedAt = LocalDateTime.now();
 
-        if(openToWork == null){
+        if(this.openToWork == null){
             this.openToWork = true;
+        }
+
+        if(this.experience == null){
+            this.experience = 0;
         }
     }
 
