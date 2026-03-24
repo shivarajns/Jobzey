@@ -42,7 +42,7 @@ public class RecruiterProfile {
     @Column(name = "industry")
     private String industry;
 
-    @Column(name = "company_description")
+    @Column(name = "company_description", columnDefinition = "TEXT")
     private String companyDescription;
 
     @Column(name = "experience_years")
@@ -51,7 +51,7 @@ public class RecruiterProfile {
     @Column(name = "linkedin_url")
     private String linkedInUrl;
 
-    @Column(name = "created_at")
+    @Column(name = "created_at", updatable = false)
     private LocalDateTime createdAt;
 
 
