@@ -1,0 +1,15 @@
+package com.jobzey.backend.AuthenticationSystem.repository;
+
+import com.jobzey.backend.AuthenticationSystem.model.User;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.Optional;
+
+interface UserRepository extends JpaRepository<User, Long> {
+
+    Optional <User> findByFirebaseUid(String firebaseUid);
+    Optional <User> findByEmail(String email);
+
+    boolean existByFirebaseUid(String firebaseUid);
+    boolean existByEmail(String email);
+}
