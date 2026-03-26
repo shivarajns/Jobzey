@@ -1,4 +1,4 @@
-package com.jobzey.backend.model;
+package com.jobzey.backend.AuthenticationSystem.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
