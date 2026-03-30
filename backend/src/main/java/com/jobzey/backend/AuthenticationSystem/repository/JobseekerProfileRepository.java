@@ -8,6 +8,6 @@ import java.util.Optional;
 
 public interface JobseekerProfileRepository extends JpaRepository<Long, JobseekerProfiles> {
     Optional<JobseekerProfiles> findByUser(User user);
-    Optional<JobseekerProfiles> findByUserId(String userId);
+    Optional<JobseekerProfiles> findByUserId(int userId);
     boolean existsByUserId(String userId);
 }

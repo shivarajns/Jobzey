@@ -9,7 +9,7 @@ import java.util.Optional;
 public interface JobseekerEducationRepository extends JpaRepository<Long, JobSeekerEducation> {
 
     Optional<JobSeekerEducation> findByUser(User user);
-    Optional<JobSeekerEducation> findByUserId(String userId);
+    Optional<JobSeekerEducation> findByUserId(int userId);
 
     void deleteByUser(User user);
 }
