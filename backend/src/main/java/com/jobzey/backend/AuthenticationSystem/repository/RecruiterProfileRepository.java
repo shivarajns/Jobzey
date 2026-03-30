@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
 
-interface RecruiterProfileRepository extends JpaRepository<RecruiterProfile, Long> {
+public interface RecruiterProfileRepository extends JpaRepository<RecruiterProfile, Long> {
     Optional<RecruiterProfile> findByUser (User user);
     Optional<RecruiterProfile> findByUserId(String userId);
     boolean existByUser(User user);
