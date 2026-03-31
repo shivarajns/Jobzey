@@ -9,5 +9,5 @@ import java.util.Optional;
 public interface RecruiterProfileRepository extends JpaRepository<RecruiterProfile, Long> {
     Optional<RecruiterProfile> findByUser (User user);
     Optional<RecruiterProfile> findByUserId(int userId);
-    boolean existByUser(User user);
+    boolean existsByUser(User user);
 }
