@@ -75,7 +75,7 @@ function RecruiterSignup() {
     try {
       setLoading(true);
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-
+      console.log(userCredential) // delete after some times
       await updateProfile(userCredential.user, {
         displayName: fullName,
         photoURL: JSON.stringify({

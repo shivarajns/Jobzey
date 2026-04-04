@@ -3,6 +3,7 @@ import { createUserWithEmailAndPassword, sendEmailVerification } from "firebase/
 import { useNavigate, Link } from "react-router-dom";
 import auth from "../Firebase/FirebaseConfig";
 import "./Signup.css";
+import { registerJobseeker } from "../Service/AuthApi";
 
 function getErrorMessage(code) {
   switch (code) {
@@ -38,9 +39,17 @@ function Signup() {
     try {
       setLoading(true);
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
+      
+      await registerJobseeker(
+        user.uid,
+        user.email,
+      )
+      
       await sendEmailVerification(userCredential.user);
       navigate("/verify-email");
     } catch (err) {
+      console.error(err)
       setError(getErrorMessage(err.code));
     } finally {
       setLoading(false);
