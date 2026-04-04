@@ -29,6 +29,14 @@ public class FirebaseAuthFilter extends OncePerRequestFilter {
 
         String authHead = request.getHeader("Authorization");
 
+        String path = request.getRequestURI();
+
+
+        if (path.startsWith("/api/auth/")) {
+            filterChain.doFilter(request, response);
+            return;
+        }
+
         if(authHead == null || !authHead.startsWith("Bearer ")){
             filterChain.doFilter(request, response);
             return;
