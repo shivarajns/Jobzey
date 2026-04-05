@@ -3,6 +3,7 @@ import { createUserWithEmailAndPassword, sendEmailVerification, updateProfile } 
 import { useNavigate, Link } from "react-router-dom";
 import auth from "../Firebase/FirebaseConfig";
 import "./RecruiterSignup.css";
+import { registerRecruiter } from "../Service/AuthApi";
 
 function getErrorMessage(code) {
   switch (code) {
@@ -74,6 +75,10 @@ function RecruiterSignup() {
 
   try {
     setLoading(true);
+    
+    // Set role in localStorage before creating user
+    localStorage.setItem('userRole', 'recruiter');
+    
     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
     console.log(userCredential); // delete after some times
     
@@ -89,8 +94,13 @@ function RecruiterSignup() {
       }),
     });
 
+    const user = userCredential.user;
+    await registerRecruiter(
+      user.uid,
+      user.email,
+    );
+
     // ✅ Store role in localStorage
-    localStorage.setItem('userRole', 'recruiter');
     localStorage.setItem('userData', JSON.stringify({
       email: userCredential.user.email,
       uid: userCredential.user.uid,

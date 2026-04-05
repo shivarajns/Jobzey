@@ -15,23 +15,24 @@ function AuthProvider({ children }) {
             setCurrentUser(user);
             
             if (user) {
-                // Get role from user.photoURL
                 let role = 'jobseeker';
-                if (user.photoURL) {
+                const storedRole = localStorage.getItem('userRole');
+                
+                if (storedRole) {
+                    role = storedRole;
+                } else if (user.photoURL) {
                     try {
                         const profileData = JSON.parse(user.photoURL);
                         if (profileData.role === 'recruiter') {
                             role = 'recruiter';
                         }
                     } catch (e) {
-                        // Not JSON, treat as jobseeker
                         role = 'jobseeker';
                     }
                 }
                 
                 setUserRole(role);
                 
-                // Store in localStorage for consistency
                 localStorage.setItem('userRole', role);
                 localStorage.setItem('userData', JSON.stringify({
                     email: user.email,
@@ -39,7 +40,7 @@ function AuthProvider({ children }) {
                     role: role
                 }));
             } else {
-                // User logged out - clear everything
+                
                 setUserRole(null);
                 setUserData(null);
                 localStorage.removeItem('userRole');
@@ -73,7 +74,7 @@ function AuthProvider({ children }) {
             userRole, 
             userData, 
             loading,
-            getDashboardPath  // ✅ Now available!
+            getDashboardPath 
         }}>
             {!loading && children}
         </AuthContext.Provider>

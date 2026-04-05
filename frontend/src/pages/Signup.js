@@ -41,7 +41,6 @@ function Signup() {
     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
     const user = userCredential.user;
     
-    // ✅ Store role in localStorage
     localStorage.setItem('userRole', 'jobseeker');
     localStorage.setItem('userData', JSON.stringify({
       email: user.email,
@@ -52,6 +51,7 @@ function Signup() {
     await registerJobseeker(
       user.uid,
       user.email,
+      user.displayName
     );
     
     console.log(userCredential);

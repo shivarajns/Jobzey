@@ -22,7 +22,7 @@ async function registerRecruiter(firebaseUid,
     const response = await API.post("/api/auth/register/recruiter", {
         firebaseUid,
         email,
-        username: username || email.split("@")[0],
+        username,
         phone: phone || "",
         fullName: fullName || "",
         jobTitle: jobTitle || "",
