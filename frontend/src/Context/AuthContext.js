@@ -15,21 +15,29 @@ function AuthProvider({ children }) {
             setCurrentUser(user);
             
             if (user) {
-                // Get role from localStorage (stored during signup/login)
-                const storedRole = localStorage.getItem('userRole');
-                const storedUserData = localStorage.getItem('userData');
-                
-                if (storedRole) {
-                    setUserRole(storedRole);
-                }
-                
-                if (storedUserData) {
+                // Get role from user.photoURL
+                let role = 'jobseeker';
+                if (user.photoURL) {
                     try {
-                        setUserData(JSON.parse(storedUserData));
+                        const profileData = JSON.parse(user.photoURL);
+                        if (profileData.role === 'recruiter') {
+                            role = 'recruiter';
+                        }
                     } catch (e) {
-                        console.error("Error parsing user data:", e);
+                        // Not JSON, treat as jobseeker
+                        role = 'jobseeker';
                     }
                 }
+                
+                setUserRole(role);
+                
+                // Store in localStorage for consistency
+                localStorage.setItem('userRole', role);
+                localStorage.setItem('userData', JSON.stringify({
+                    email: user.email,
+                    uid: user.uid,
+                    role: role
+                }));
             } else {
                 // User logged out - clear everything
                 setUserRole(null);
