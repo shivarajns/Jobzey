@@ -6,12 +6,12 @@ import com.google.firebase.auth.FirebaseAuthException;
 import com.jobzey.backend.AuthenticationSystem.dto.AuthResponse;
 import com.jobzey.backend.AuthenticationSystem.dto.JobseekerRegisterRequestDto;
 import com.jobzey.backend.AuthenticationSystem.dto.RecruiterRegisterRequestDto;
-import com.jobzey.backend.AuthenticationSystem.model.JobseekerProfiles;
-import com.jobzey.backend.AuthenticationSystem.model.RecruiterProfile;
-import com.jobzey.backend.AuthenticationSystem.model.User;
-import com.jobzey.backend.AuthenticationSystem.repository.JobseekerProfileRepository;
-import com.jobzey.backend.AuthenticationSystem.repository.RecruiterProfileRepository;
-import com.jobzey.backend.AuthenticationSystem.repository.UserRepository;
+import com.jobzey.backend.model.JobseekerProfile;
+import com.jobzey.backend.model.RecruiterProfile;
+import com.jobzey.backend.model.User;
+import com.jobzey.backend.repository.JobseekerProfileRepository;
+import com.jobzey.backend.repository.RecruiterProfileRepository;
+import com.jobzey.backend.repository.UserRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -56,7 +56,7 @@ public class AuthService {
 
         User saveUser = userRepository.save(user);
 
-        JobseekerProfiles profiles = JobseekerProfiles.builder()
+        JobseekerProfile profiles = JobseekerProfile.builder()
                 .userId(saveUser)
                 .experience(0)
                 .openToWork(true)

@@ -1,4 +1,4 @@
-package com.jobzey.backend.AuthenticationSystem.model;
+package com.jobzey.backend.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "jobseeker_profiles")
-public class JobseekerProfiles {
+public class JobseekerProfile {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

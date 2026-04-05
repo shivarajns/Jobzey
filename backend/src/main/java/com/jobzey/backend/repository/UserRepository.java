@@ -1,6 +1,6 @@
-package com.jobzey.backend.AuthenticationSystem.repository;
+package com.jobzey.backend.repository;
 
-import com.jobzey.backend.AuthenticationSystem.model.User;
+import com.jobzey.backend.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

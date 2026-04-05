@@ -32,7 +32,13 @@ public class FirebaseAuthFilter extends OncePerRequestFilter {
         String path = request.getRequestURI();
 
 
-        if (path.startsWith("/api/auth/")) {
+        List<String> excludedPaths = List.of(
+                "/api/auth/test/public",
+                "/api/auth/register/jobseeker",
+                "/api/auth/register/recruiter"
+        );
+
+        if (excludedPaths.contains(path)) {
             filterChain.doFilter(request, response);
             return;
         }
@@ -51,9 +57,7 @@ public class FirebaseAuthFilter extends OncePerRequestFilter {
             String email = decodeToken.getEmail();
 
             UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(
-                    uid,
-                    email,
-                    List.of(new SimpleGrantedAuthority("ROLE_USER"))
+                    uid, null, List.of(new SimpleGrantedAuthority("ROLE_USER"))
             );
 
             SecurityContextHolder.getContext().setAuthentication(authenticationToken);
