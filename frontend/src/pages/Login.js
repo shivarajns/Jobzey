@@ -24,27 +24,57 @@ function Login() {
   const navigate = useNavigate();
 
   async function handleLogin(e) {
-    e.preventDefault();
-    setError("");
+  e.preventDefault();
+  setError("");
 
-    try {
-      setLoading(true);
-      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+  try {
+    setLoading(true);
+    const userCredential = await signInWithEmailAndPassword(auth, email, password);
 
-      if (!userCredential.user.emailVerified) {
-        setError("Please verify your email before logging in.");
-        return;
-      }
-
-      const idToken = await userCredential.user.getIdToken();
-      localStorage.setItem("token", idToken);
-      navigate("/dashboard");
-    } catch (err) {
-      setError(getErrorMessage(err.code));
-    } finally {
-      setLoading(false);
+    if (!userCredential.user.emailVerified) {
+      setError("Please verify your email before logging in.");
+      return;
     }
+
+    const idToken = await userCredential.user.getIdToken();
+    localStorage.setItem("token", idToken);
+    
+    const user = userCredential.user;
+    let role = 'jobseeker';
+    
+    if (user.photoURL) {
+      try {
+        const profileData = JSON.parse(user.photoURL);
+        if (profileData.role === 'recruiter') {
+          role = 'recruiter';
+        }
+      } catch (e) {
+        // Not JSON, treat as jobseeker
+        role = 'jobseeker';
+      }
+    }
+    
+    // Store role in localStorage
+    localStorage.setItem('userRole', role);
+    localStorage.setItem('userData', JSON.stringify({
+      email: user.email,
+      uid: user.uid,
+      role: role
+    }));
+    
+    // Redirect based on role
+    if (role === 'jobseeker') {
+      navigate("/jobseeker/dashboard");
+    } else if (role === 'recruiter') {
+      navigate("/recruiter/dashboard");
+    }
+    
+  } catch (err) {
+    setError(getErrorMessage(err.code));
+  } finally {
+    setLoading(false);
   }
+}
 
   return (
     <div className="login-page">

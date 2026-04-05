@@ -1,0 +1,92 @@
+.rec-dashboard {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.rec-dashboard__container {
+  max-width: 600px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  padding: 3rem;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
+.rec-dashboard__profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.rec-dashboard__avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  font-weight: bold;
+  box-shadow: 0 10px 30px rgba(240, 147, 251, 0.4);
+}
+
+.rec-dashboard__welcome {
+  font-size: 1.8rem;
+  color: #1a202c;
+  margin: 0;
+}
+
+.rec-dashboard__name {
+  color: #f5576c;
+  font-weight: 700;
+}
+
+.rec-dashboard__email {
+  color: #718096;
+  margin: 0.5rem 0 0 0;
+  font-size: 1rem;
+}
+
+.rec-dashboard__message {
+  background: linear-gradient(135deg, #fff5f7 0%, #ffe9ec 100%);
+  border-radius: 15px;
+  padding: 2rem;
+  margin-top: 2rem;
+}
+
+.rec-dashboard__message h2 {
+  font-size: 1.5rem;
+  color: #2d3748;
+  margin: 0 0 1rem 0;
+}
+
+.rec-dashboard__message p {
+  font-size: 1rem;
+  color: #4a5568;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .rec-dashboard__container {
+    padding: 2rem;
+  }
+  
+  .rec-dashboard__welcome {
+    font-size: 1.4rem;
+  }
+  
+  .rec-dashboard__avatar {
+    width: 80px;
+    height: 80px;
+    font-size: 2.5rem;
+  }
+}

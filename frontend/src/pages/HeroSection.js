@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
+import { useAuth } from "../Context/AuthContext";
 import "./HeroSection.css";
 
 function HeroSection() {
+  const { currentUser, getDashboardPath, loading } = useAuth();
+
   return (
     <section className="hero" id="home">
       <div className="hero__bg">
@@ -29,12 +32,24 @@ function HeroSection() {
         </p>
 
         <div className="hero__cta">
-          <Link to="/signup" className="hero__cta-primary">
-            Start for free
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M5 12h14M12 5l7 7-7 7" />
-            </svg>
-          </Link>
+          {!loading && (
+            currentUser ? (
+              <Link to={getDashboardPath()} className="hero__cta-primary">
+                Go to Dashboard
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+              </Link>
+            ) : (
+              <Link to="/signup" className="hero__cta-primary">
+                Start for free
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+              </Link>
+            )
+          )}
+          
           <a href="#how-it-works" className="hero__cta-secondary">
             See how it works
           </a>

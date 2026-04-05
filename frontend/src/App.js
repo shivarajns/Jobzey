@@ -3,35 +3,50 @@ import AuthProvider from "./Context/AuthContext";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import VerifyEmail from "./pages/VerifyEmail";
-import ProtectedRoute from "./Components/ProtectedRoute"
-import Dashboard from "./pages/Dashboard";
+import ProtectedRoute from "./Components/ProtectedRoute";
 import Home from "./pages/Home";
 import Navbar from "./Components/Navbar";
 import RecruiterSignup from "./pages/RecruiterSignup";
-
-
+import JobSeekerDashboard from "./pages/JobSeekerDashboard";
+import RecruiterDashboard from "./pages/RecruiterDashboard";
 
 function App() {
   return (
     <AuthProvider>
       <BrowserRouter basename={process.env.PUBLIC_URL}>
-        <Navbar/>
+        <Navbar />
         <Routes>
           <Route path="/" element={<Navigate to="/home" replace />} />
-          <Route path="/home" element={<Home/>} />
+          <Route path="/home" element={<Home />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
           <Route path="/verify-email" element={<VerifyEmail />} />
+          <Route path="/recruiter-signup" element={<RecruiterSignup />} />
+          
+          {/* JobSeeker Dashboard */}
           <Route
-            path="/dashboard"
+            path="/jobseeker/dashboard"
             element={
               <ProtectedRoute>
-                <Dashboard />
+                <JobSeekerDashboard />
               </ProtectedRoute>
             }
           />
+          
+          {/* Recruiter Dashboard */}
+          <Route
+            path="/recruiter/dashboard"
+            element={
+              <ProtectedRoute>
+                <RecruiterDashboard />
+              </ProtectedRoute>
+            }
+          />
+          
+          {/* Old dashboard route - redirect based on role */}
+          <Route path="/dashboard" element={<Navigate to="/home" replace />} />
+          
           <Route path="*" element={<Navigate to="/home" replace />} />
-          <Route path="/recruiter-signup" element={<RecruiterSignup />} />
         </Routes>
       </BrowserRouter>
     </AuthProvider>

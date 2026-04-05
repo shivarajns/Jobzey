@@ -26,35 +26,44 @@ function Signup() {
   const navigate = useNavigate();
 
   async function handleSignup(e) {
-    e.preventDefault();
-    setError("");
+  e.preventDefault();
+  setError("");
 
-    if (password !== confirm) {
-      return setError("Passwords do not match.");
-    }
-    if (password.length < 6) {
-      return setError("Password must be at least 6 characters.");
-    }
-
-    try {
-      setLoading(true);
-      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-      const user = userCredential.user;
-      
-      await registerJobseeker(
-        user.uid,
-        user.email,
-      )
-      
-      await sendEmailVerification(userCredential.user);
-      navigate("/verify-email");
-    } catch (err) {
-      console.error(err)
-      setError(getErrorMessage(err.code));
-    } finally {
-      setLoading(false);
-    }
+  if (password !== confirm) {
+    return setError("Passwords do not match.");
   }
+  if (password.length < 6) {
+    return setError("Password must be at least 6 characters.");
+  }
+
+  try {
+    setLoading(true);
+    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+    const user = userCredential.user;
+    
+    // ✅ Store role in localStorage
+    localStorage.setItem('userRole', 'jobseeker');
+    localStorage.setItem('userData', JSON.stringify({
+      email: user.email,
+      uid: user.uid,
+      role: 'jobseeker'
+    }));
+    
+    await registerJobseeker(
+      user.uid,
+      user.email,
+    );
+    
+    console.log(userCredential);
+    await sendEmailVerification(userCredential.user);
+    navigate("/verify-email");
+  } catch (err) {
+    console.error(err);
+    setError(getErrorMessage(err.code));
+  } finally {
+    setLoading(false);
+  }
+}
 
   function getStrength(pwd) {
     if (!pwd) return 0;

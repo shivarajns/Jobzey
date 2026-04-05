@@ -65,37 +65,48 @@ function RecruiterSignup() {
   }
 
   async function handleSignup(e) {
-    e.preventDefault();
-    setError("");
+  e.preventDefault();
+  setError("");
 
-    if (!companyName.trim()) return setError("Please enter your company name.");
-    if (!jobTitle.trim()) return setError("Please enter your job title.");
-    if (!experience) return setError("Please select years of experience.");
+  if (!companyName.trim()) return setError("Please enter your company name.");
+  if (!jobTitle.trim()) return setError("Please enter your job title.");
+  if (!experience) return setError("Please select years of experience.");
 
-    try {
-      setLoading(true);
-      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-      console.log(userCredential) // delete after some times
-      await updateProfile(userCredential.user, {
-        displayName: fullName,
-        photoURL: JSON.stringify({
-          role: "recruiter",
-          companyName,
-          companyWebsite,
-          phone,
-          jobTitle,
-          experience,
-        }),
-      });
+  try {
+    setLoading(true);
+    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+    console.log(userCredential); // delete after some times
+    
+    await updateProfile(userCredential.user, {
+      displayName: fullName,
+      photoURL: JSON.stringify({
+        role: "recruiter",
+        companyName,
+        companyWebsite,
+        phone,
+        jobTitle,
+        experience,
+      }),
+    });
 
-      await sendEmailVerification(userCredential.user);
-      navigate("/verify-email");
-    } catch (err) {
-      setError(getErrorMessage(err.code));
-    } finally {
-      setLoading(false);
-    }
+    // ✅ Store role in localStorage
+    localStorage.setItem('userRole', 'recruiter');
+    localStorage.setItem('userData', JSON.stringify({
+      email: userCredential.user.email,
+      uid: userCredential.user.uid,
+      role: 'recruiter',
+      companyName,
+      fullName
+    }));
+
+    await sendEmailVerification(userCredential.user);
+    navigate("/verify-email");
+  } catch (err) {
+    setError(getErrorMessage(err.code));
+  } finally {
+    setLoading(false);
   }
+}
 
   return (
     <div className="rec-page">
