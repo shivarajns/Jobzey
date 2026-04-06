@@ -49,7 +49,6 @@ function Login() {
           role = 'recruiter';
         }
       } catch (e) {
-        // Not JSON, treat as jobseeker
         role = 'jobseeker';
       }
     }

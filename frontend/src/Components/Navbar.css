@@ -1,23 +1,9 @@
-/* ─── Demo Banner ───────────────────────────────────────── */
-.demo-banner {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  z-index: 101;
-  background: rgba(79, 142, 255, 0.12);
-  border-bottom: 1px solid rgba(79, 142, 255, 0.25);
-  color: #4f8eff;
-  text-align: center;
-  font-size: 0.78rem;
-  font-weight: 500;
-  padding: 0.4rem 1rem;
-  letter-spacing: 0.02em;
-  backdrop-filter: blur(8px);
-}
-
-/* ─── Navbar ────────────────────────────────────────────── */
+/*Navbar */
 .navbar {
   position: fixed;
-  top: 30px; left: 0; right: 0;
+  top: 0px;
+  left: 0;
+  right: 0;
   z-index: 100;
   padding: 0 2rem;
   height: 68px;
@@ -29,7 +15,7 @@
 .navbar--scrolled {
   background: rgba(8, 11, 18, 0.85);
   backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(255,255,255,0.07);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
 }
 
 .navbar__inner {
@@ -51,10 +37,13 @@
 }
 
 .navbar__logo-icon {
-  width: 34px; height: 34px;
+  width: 34px;
+  height: 34px;
   background: linear-gradient(135deg, #4f8eff, #7b5ea7);
   border-radius: 8px;
-  display: flex; align-items: center; justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-weight: 800;
   font-size: 1rem;
   color: #fff;
@@ -85,10 +74,15 @@
   transition: color 0.2s;
 }
 
-.navbar__links a:hover { color: #f0f4ff; }
+.navbar__links a:hover {
+  color: #f0f4ff;
+}
 
 /* Actions */
-.navbar__actions { flex-shrink: 0; margin-left: 2rem; }
+.navbar__actions {
+  flex-shrink: 0;
+  margin-left: 2rem;
+}
 
 .navbar__auth {
   display: flex;
@@ -105,7 +99,9 @@
   padding: 0.4rem 0.75rem;
 }
 
-.navbar__login:hover { color: #f0f4ff; }
+.navbar__login:hover {
+  color: #f0f4ff;
+}
 
 .navbar__signup {
   text-decoration: none;
@@ -118,7 +114,10 @@
   transition: opacity 0.2s, transform 0.2s;
 }
 
-.navbar__signup:hover { opacity: 0.88; transform: translateY(-1px); }
+.navbar__signup:hover {
+  opacity: 0.88;
+  transform: translateY(-1px);
+}
 
 /* Avatar */
 .navbar__user {
@@ -128,10 +127,13 @@
 }
 
 .navbar__avatar {
-  width: 34px; height: 34px;
+  width: 34px;
+  height: 34px;
   background: linear-gradient(135deg, #4f8eff, #7b5ea7);
   border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-weight: 700;
   font-size: 0.875rem;
   color: #fff;
@@ -140,7 +142,7 @@
 
 .navbar__logout {
   background: transparent;
-  border: 1px solid rgba(255,255,255,0.12);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   color: #8b93a8;
   font-size: 0.85rem;
   font-weight: 500;
@@ -169,31 +171,50 @@
 
 .navbar__hamburger span {
   display: block;
-  width: 22px; height: 2px;
+  width: 22px;
+  height: 2px;
   background: #8b93a8;
   border-radius: 2px;
   transition: all 0.3s;
 }
 
-.navbar__hamburger--open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-.navbar__hamburger--open span:nth-child(2) { opacity: 0; }
-.navbar__hamburger--open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.navbar__hamburger--open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.navbar__hamburger--open span:nth-child(2) {
+  opacity: 0;
+}
+
+.navbar__hamburger--open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
 
 /* ─── Responsive ────────────────────────────────────────── */
 @media (max-width: 768px) {
   .navbar__links {
     display: none;
     position: fixed;
-    top: 98px; left: 0; right: 0;
-    background: rgba(8,11,18,0.97);
+    top: 60px;
+    left: 0;
+    right: 0;
+    background: rgba(8, 11, 18, 0.97);
     backdrop-filter: blur(16px);
     flex-direction: column;
     padding: 1.5rem 2rem;
     gap: 1.25rem;
-    border-bottom: 1px solid rgba(255,255,255,0.07);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
   }
 
-  .navbar__links--open { display: flex; }
-  .navbar__actions { display: none; }
-  .navbar__hamburger { display: flex; }
+  .navbar__links--open {
+    display: flex;
+  }
+
+  .navbar__actions {
+    display: none;
+  }
+
+  .navbar__hamburger {
+    display: flex;
+  }
 }

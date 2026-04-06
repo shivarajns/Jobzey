@@ -33,9 +33,7 @@ function Navbar() {
 
   return (
     <>
-      <div className="demo-banner">
-        🚧 This is a portfolio/demo project — all data and numbers are for demonstration purposes only
-      </div>
+
 
       <nav className={`navbar ${scrolled ? "navbar--scrolled" : ""}`}>
         <div className="navbar__inner">
