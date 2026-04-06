@@ -50,7 +50,7 @@ public class UserDashboardService {
                             .email(user.getEmail())
                             .username(user.getUsername())
                             .phone(user.getPhone())
-                            .role("N/A")
+                            .role(user.getRole() != null ? user.getRole().name() : "N/A")
                             .jobTitle(recruiterProfile1.getJobTitle())
                             .companyName(recruiterProfile1.getCompanyName())
                             .companyWebsite(recruiterProfile1.getCompanyWebsite())

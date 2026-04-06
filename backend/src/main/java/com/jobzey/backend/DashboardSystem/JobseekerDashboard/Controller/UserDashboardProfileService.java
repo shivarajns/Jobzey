@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/dashboard")
+@RequestMapping("/api")
 public class UserDashboardProfileService {
 
     private final UserDashboardService dashboardService;
@@ -23,7 +23,7 @@ public class UserDashboardProfileService {
         this.dashboardService = dashboardService;
     }
 
-    @GetMapping("/jobseeker")
+    @GetMapping("/dashboard")
     public ResponseEntity<UserDashboardResponseDTO> getDashboardData(
             @RequestHeader("Authorization") String authHeader
     ) throws FirebaseAuthException {
