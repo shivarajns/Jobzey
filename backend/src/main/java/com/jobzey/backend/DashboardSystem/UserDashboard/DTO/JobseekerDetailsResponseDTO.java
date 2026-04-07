@@ -1,4 +1,4 @@
-package com.jobzey.backend.DashboardSystem.JobseekerDashboard.DTO;
+package com.jobzey.backend.DashboardSystem.UserDashboard.DTO;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -15,8 +15,12 @@ public class JobseekerDetailsResponseDTO extends UserDashboardResponseDTO{
     private String dob;
     private String gender;
     private String location;
+    private String portfolioUrl;
     private String resumeUrl;
     private String interestedDomains;
     private String isOpenToWork;
+    private String currentDesi;
+    private String currentCompany;
+    private int expYears;
 
 }

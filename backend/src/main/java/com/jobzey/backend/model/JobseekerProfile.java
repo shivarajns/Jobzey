@@ -42,7 +42,7 @@ public class JobseekerProfile {
     private String location;
 
     @Column(name = "portfolio_url")
-    private String profileURL;
+    private String portfolioUrl;
 
     @Column(name = "resume_url")
     private String resumeURL;

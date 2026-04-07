@@ -1,9 +1,9 @@
-package com.jobzey.backend.DashboardSystem.JobseekerDashboard.Service;
+package com.jobzey.backend.DashboardSystem.UserDashboard.Service;
 
-import com.jobzey.backend.DashboardSystem.JobseekerDashboard.DTO.JobseekerDetailsResponseDTO;
-import com.jobzey.backend.DashboardSystem.JobseekerDashboard.DTO.RecruiterDashboardResponseDTO;
-import com.jobzey.backend.DashboardSystem.JobseekerDashboard.DTO.UserDashboardResponseDTO;
-import com.jobzey.backend.DashboardSystem.JobseekerDashboard.ExceptionHandling.ProfileNotFoundException;
+import com.jobzey.backend.DashboardSystem.UserDashboard.DTO.JobseekerDetailsResponseDTO;
+import com.jobzey.backend.DashboardSystem.UserDashboard.DTO.RecruiterDashboardResponseDTO;
+import com.jobzey.backend.DashboardSystem.UserDashboard.DTO.UserDashboardResponseDTO;
+import com.jobzey.backend.DashboardSystem.UserDashboard.ExceptionHandling.ProfileNotFoundException;
 import com.jobzey.backend.model.JobseekerProfile;
 import com.jobzey.backend.model.RecruiterProfile;
 import com.jobzey.backend.model.User;
@@ -80,11 +80,15 @@ public class UserDashboardService {
                             .role(user.getRole()!= null ? user.getRole().name() : "N/A")
                             .bio(profile.getBio())
                             .dob(profile.getDob()!= null ? profile.getDob().toString(): "N/A")
-                            .gender(profile.getGender() != null ? profile.getGender().name() : "N/A")
+                            .gender(profile.getGender() != null ? profile.getGender().toString() : "N/A")
                             .location(profile.getLocation())
+                            .portfolioUrl(profile.getPortfolioUrl())
                             .resumeUrl(profile.getResumeURL())
                             .interestedDomains(profile.getInterestedDomain())
                             .isOpenToWork(profile.getOpenToWork().toString())
+                            .currentCompany(profile.getCurrCompany())
+                            .currentDesi(profile.getCurrCompany())
+                            .expYears(profile.getExperience())
                             .build();
                 }
                 default ->

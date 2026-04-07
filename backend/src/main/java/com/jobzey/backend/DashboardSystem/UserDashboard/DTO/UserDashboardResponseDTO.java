@@ -1,7 +1,6 @@
-package com.jobzey.backend.DashboardSystem.JobseekerDashboard.DTO;
+package com.jobzey.backend.DashboardSystem.UserDashboard.DTO;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
