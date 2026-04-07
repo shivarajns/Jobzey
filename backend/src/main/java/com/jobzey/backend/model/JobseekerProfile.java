@@ -23,7 +23,7 @@ public class JobseekerProfile {
 
     @OneToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
-    private User userId;
+    private User user;
 
     @Column(name = "full_name", length = 125)
     private String fullName;
