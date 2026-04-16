@@ -7,8 +7,8 @@ import ProtectedRoute from "./Components/ProtectedRoute";
 import Home from "./pages/Home";
 import Navbar from "./Components/Navbar";
 import RecruiterSignup from "./pages/RecruiterSignup";
-import JobSeekerDashboard from "./pages/JobSeekerDashboard";
 import RecruiterDashboard from "./pages/RecruiterDashboard";
+import JobseekerDashboard from "./pages/JobseekerDashboard";
 
 function App() {
   return (
@@ -28,7 +28,7 @@ function App() {
             path="/jobseeker/dashboard"
             element={
               <ProtectedRoute>
-                <JobSeekerDashboard />
+                <JobseekerDashboard />
               </ProtectedRoute>
             }
           />
