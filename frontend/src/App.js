@@ -9,6 +9,10 @@ import Navbar from "./Components/Navbar";
 import RecruiterSignup from "./pages/RecruiterSignup";
 import RecruiterDashboard from "./pages/RecruiterDashboard";
 import JobseekerDashboard from "./pages/JobseekerDashboard";
+import JobseekerEditProfile from "./pages/JobseekerEditProfile";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 
 function App() {
   return (
@@ -42,13 +46,25 @@ function App() {
               </ProtectedRoute>
             }
           />
+
+          <Route
+            path="/jobseeker/edit-profile"
+            element={
+              <ProtectedRoute>
+                <JobseekerEditProfile />
+              </ProtectedRoute>
+            }
+          />
+        
           
           {/* Old dashboard route - redirect based on role */}
           <Route path="/dashboard" element={<Navigate to="/home" replace />} />
           
+          
           <Route path="*" element={<Navigate to="/home" replace />} />
         </Routes>
       </BrowserRouter>
+      <ToastContainer position="top-right" autoClose={2000} />
     </AuthProvider>
   );
 }

@@ -163,8 +163,8 @@ function JobseekerDashboard() {
                   </svg>
                   {userData.location}
                 </span>
-                <span className="dashboard-hero__divider">•</span>
-                <span className="dashboard-hero__exp">{userData.expYears} years experience</span>
+                {/* <span className="dashboard-hero__divider">•</span> */}
+                {/* <span className="dashboard-hero__exp">{userData.expYears} years experience</span> */}
               </div>
               {userData.isOpenToWork === "true" && (
                 <div className="dashboard-status-badge">
@@ -265,7 +265,7 @@ function JobseekerDashboard() {
             </div>
 
             {/* Professional Information */}
-            <div className="dashboard-card">
+            {/* <div className="dashboard-card">
               <h2 className="dashboard-card__title">Professional Information</h2>
               <div className="dashboard-info-list">
                 <div className="dashboard-info-item">
@@ -307,7 +307,7 @@ function JobseekerDashboard() {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
 
             {/* Links & Resources */}
             <div className="dashboard-card">
