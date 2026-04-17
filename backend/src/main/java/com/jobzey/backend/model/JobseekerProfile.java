@@ -47,17 +47,17 @@ public class JobseekerProfile {
     @Column(name = "resume_url")
     private String resumeURL;
 
-    @Column(name = "current_designation")
-    private String currDesignation;
-
-    @Column(name = "current_company")
-    private String currCompany;
-
-    @Column(name = "experience_years")
-    private Integer experience;
-
-    @Column(name = "interested_domains")
-    private String interestedDomain;
+//    @Column(name = "current_designation")
+//    private String currDesignation;
+//
+//    @Column(name = "current_company")
+//    private String currCompany;
+//
+//    @Column(name = "experience_years")
+//    private Integer experience;
+//
+//    @Column(name = "interested_domains")
+//    private String interestedDomain;
 
     @Column(name = "open_to_work")
     private Boolean openToWork;
@@ -87,9 +87,6 @@ public class JobseekerProfile {
             this.openToWork = true;
         }
 
-        if(this.experience == null){
-            this.experience = 0;
-        }
     }
 
     @PreUpdate

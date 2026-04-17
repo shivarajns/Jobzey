@@ -6,11 +6,9 @@ import com.google.firebase.auth.FirebaseAuthException;
 import com.jobzey.backend.AuthenticationSystem.dto.AuthResponse;
 import com.jobzey.backend.AuthenticationSystem.dto.JobseekerRegisterRequestDto;
 import com.jobzey.backend.AuthenticationSystem.dto.RecruiterRegisterRequestDto;
-import com.jobzey.backend.model.JobSeekerEducation;
 import com.jobzey.backend.model.JobseekerProfile;
 import com.jobzey.backend.model.RecruiterProfile;
 import com.jobzey.backend.model.User;
-import com.jobzey.backend.repository.JobseekerEducationRepository;
 import com.jobzey.backend.repository.JobseekerProfileRepository;
 import com.jobzey.backend.repository.RecruiterProfileRepository;
 import com.jobzey.backend.repository.UserRepository;
@@ -33,8 +31,7 @@ public class AuthService {
     @Autowired
     private RecruiterProfileRepository recruiterProfileRepository;
 
-//    @Autowired
-//    private JobseekerEducationRepository educationRepository;
+
 
     @Transactional
     public AuthResponse registerJobseeker(JobseekerRegisterRequestDto requestDto){
@@ -63,16 +60,13 @@ public class AuthService {
 
         JobseekerProfile profiles = JobseekerProfile.builder()
                 .user(saveUser)
-                .experience(0)
+//                .experience(0)
                 .openToWork(true)
                 .build();
 
         jobseekerProfileRepository.save(profiles);
-//
-//        JobSeekerEducation education = JobSeekerEducation.builder()
-//                .userId(saveUser)
-//                .build();
-//        educationRepository.save(education);
+
+
 
 
 

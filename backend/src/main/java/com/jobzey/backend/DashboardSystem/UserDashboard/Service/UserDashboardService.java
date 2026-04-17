@@ -84,11 +84,11 @@ public class UserDashboardService {
                             .location(profile.getLocation())
                             .portfolioUrl(profile.getPortfolioUrl())
                             .resumeUrl(profile.getResumeURL())
-                            .interestedDomains(profile.getInterestedDomain())
+//                            .interestedDomains(profile.getInterestedDomain())
+//                            .currentCompany(profile.getCurrCompany())
+//                            .currentDesi(profile.getCurrCompany())
+//                            .expYears(profile.getExperience())
                             .isOpenToWork(profile.getOpenToWork().toString())
-                            .currentCompany(profile.getCurrCompany())
-                            .currentDesi(profile.getCurrCompany())
-                            .expYears(profile.getExperience())
                             .build();
                 }
                 default ->

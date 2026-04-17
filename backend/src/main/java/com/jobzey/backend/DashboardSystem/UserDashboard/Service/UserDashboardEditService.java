@@ -49,10 +49,6 @@ public class UserDashboardEditService {
                 profile.setLocation(editRequest.getLocation());
                 profile.setPortfolioUrl(editRequest.getPortfolioUrl());
                 profile.setResumeURL(editRequest.getResumeUrl());
-                profile.setCurrCompany(editRequest.getCurrCompany());
-                profile.setCurrDesignation(editRequest.getCurrDesignation());
-                profile.setExperience(editRequest.getExpYear());
-                profile.setInterestedDomain(editRequest.getInterestedDomain());
                 profile.setOpenToWork(editRequest.getOpenToWork());
                 jobseekerProfile.save(profile);
 

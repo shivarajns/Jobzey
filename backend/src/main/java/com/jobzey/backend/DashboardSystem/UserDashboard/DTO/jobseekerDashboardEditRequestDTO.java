@@ -18,9 +18,5 @@ public class jobseekerDashboardEditRequestDTO extends UserDashboardEditRequestDt
     private String location;
     private String portfolioUrl;
     private String resumeUrl;
-    private String currDesignation;
-    private String currCompany;
-    private int expYear;
-    private String interestedDomain;
     private Boolean openToWork;
 }
