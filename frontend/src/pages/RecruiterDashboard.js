@@ -63,6 +63,17 @@ function RecruiterDashboard() {
     return email.charAt(0).toUpperCase();
   }
 
+  function formatCompanySize(size) {
+    switch (size) {
+      case "SIZE_1_10": return "1 - 10 employees";
+      case "SIZE_11_50": return "11 - 50 employees";
+      case "SIZE_51_200": return "51 - 200 employees";
+      case "SIZE_201_500": return "201 - 500 employees";
+      case "SIZE_500_PLUS": return "500+ employees";
+      default: return "Not provided";
+    }
+  }
+
   const safe = (val) => val || "Not provided";
 
   if (loading) {
@@ -210,7 +221,7 @@ function RecruiterDashboard() {
                       Company Size
                     </span>
                     <span className="dashboard-info-item__value">
-                      {safe(userData.companySize)}
+                      {formatCompanySize(userData.companySize)}
                     </span>
                   </div>
                 </div>
@@ -264,7 +275,7 @@ function RecruiterDashboard() {
                       Experience
                     </span>
                     <span className="dashboard-info-item__value">
-                      {safe(userData.experience)}
+                      {safe(userData.experience)} years
                     </span>
                   </div>
                 </div>

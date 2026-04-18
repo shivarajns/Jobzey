@@ -12,6 +12,7 @@ import JobseekerDashboard from "./pages/JobseekerDashboard";
 import JobseekerEditProfile from "./pages/JobseekerEditProfile";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import RecruiterEditProfile from "./pages/RecruiterEditProfile"
 
 
 function App() {
@@ -52,6 +53,15 @@ function App() {
             element={
               <ProtectedRoute>
                 <JobseekerEditProfile />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/recruiter/edit-profile"
+            element={
+              <ProtectedRoute>
+                <RecruiterEditProfile />
               </ProtectedRoute>
             }
           />
