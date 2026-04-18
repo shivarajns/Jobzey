@@ -1,8 +1,6 @@
-package com.jobzey.backend.DashboardSystem.UserDashboard.DTO;
+package com.jobzey.backend.DashboardSystem.DTO;
 
-import io.netty.util.internal.StringUtil;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
