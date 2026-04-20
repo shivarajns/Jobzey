@@ -1,9 +1,9 @@
-package com.jobzey.backend.DashboardSystem.UserDashboard.Service;
+package com.jobzey.backend.DashboardSystem.Service;
 
-import com.jobzey.backend.DashboardSystem.UserDashboard.DTO.JobseekerDetailsResponseDTO;
-import com.jobzey.backend.DashboardSystem.UserDashboard.DTO.RecruiterDashboardResponseDTO;
-import com.jobzey.backend.DashboardSystem.UserDashboard.DTO.UserDashboardResponseDTO;
-import com.jobzey.backend.DashboardSystem.UserDashboard.ExceptionHandling.ProfileNotFoundException;
+import com.jobzey.backend.DashboardSystem.DTO.JobseekerDetailsResponseDTO;
+import com.jobzey.backend.DashboardSystem.DTO.RecruiterDashboardResponseDTO;
+import com.jobzey.backend.DashboardSystem.DTO.UserDashboardResponseDTO;
+import com.jobzey.backend.DashboardSystem.ExceptionHandling.ProfileNotFoundException;
 import com.jobzey.backend.model.JobseekerProfile;
 import com.jobzey.backend.model.RecruiterProfile;
 import com.jobzey.backend.model.User;
