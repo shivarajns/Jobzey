@@ -1,11 +1,11 @@
-package com.jobzey.backend.DashboardSystem.UserDashboard.Controller;
+package com.jobzey.backend.DashboardSystem.Controller;
 
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthException;
 import com.google.firebase.auth.FirebaseToken;
-import com.jobzey.backend.DashboardSystem.UserDashboard.DTO.UserDashboardResponseDTO;
-import com.jobzey.backend.DashboardSystem.UserDashboard.Service.UserDashboardService;
+import com.jobzey.backend.DashboardSystem.DTO.UserDashboardResponseDTO;
+import com.jobzey.backend.DashboardSystem.Service.UserDashboardService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
