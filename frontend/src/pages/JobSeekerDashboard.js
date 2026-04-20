@@ -179,7 +179,7 @@ function JobseekerDashboard() {
           {userData.bio && (
             <div className="dashboard-card dashboard-card--bio">
               <h2 className="dashboard-card__title">About</h2>
-              <p className="dashboard-bio-text">{userData.bio}</p>
+              <p className="dashboard-bio-text" style={{"whiteSpace" : "pre-line"}}>{userData.bio} </p>
             </div>
           )}
 

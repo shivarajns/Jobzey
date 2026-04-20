@@ -29,6 +29,7 @@ public class JobseekerProfile {
     private String fullName;
 
     @Column(name="bio", columnDefinition = "TEXT")
+    @Lob
     private String bio;
 
     @Column(name = "date_of_birth")

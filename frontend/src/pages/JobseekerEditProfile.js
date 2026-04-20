@@ -22,7 +22,7 @@ function JobseekerEditProfile() {
     email: ""
   });
 
-  const [newDomain, setNewDomain] = useState("");
+  // const [newDomain, setNewDomain] = useState("");
 
   useEffect(() => {
     fetchProfile();
@@ -62,23 +62,23 @@ function JobseekerEditProfile() {
     setFormData({ ...formData, [name]: value });
   }
 
-  function addDomain() {
-    const val = newDomain.trim();
-    if (val && !formData.interestedDomain.includes(val)) {
-      setFormData({
-        ...formData,
-        interestedDomain: [...formData.interestedDomain, val]
-      });
-      setNewDomain("");
-    }
-  }
+  // function addDomain() {
+  //   const val = newDomain.trim();
+  //   if (val && !formData.interestedDomain.includes(val)) {
+  //     setFormData({
+  //       ...formData,
+  //       interestedDomain: [...formData.interestedDomain, val]
+  //     });
+  //     setNewDomain("");
+  //   }
+  // }
 
-  function removeDomain(d) {
-    setFormData({
-      ...formData,
-      interestedDomain: formData.interestedDomain.filter(x => x !== d)
-    });
-  }
+  // function removeDomain(d) {
+  //   setFormData({
+  //     ...formData,
+  //     interestedDomain: formData.interestedDomain.filter(x => x !== d)
+  //   });
+  // }
 
   async function handleSubmit(e) {
     e.preventDefault();
