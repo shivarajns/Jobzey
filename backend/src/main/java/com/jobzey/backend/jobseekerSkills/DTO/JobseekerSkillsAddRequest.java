@@ -7,10 +7,8 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class JobseekerSkillsResponse {
+public class JobseekerSkillsAddRequest {
 
-    private String message;
-    private int id;
     private int userId;
     private int skillId;
     private String skillName;

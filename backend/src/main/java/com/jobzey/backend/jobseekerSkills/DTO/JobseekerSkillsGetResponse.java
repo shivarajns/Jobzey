@@ -1,16 +1,18 @@
 package com.jobzey.backend.jobseekerSkills.DTO;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class JobseekerSkillsRequest {
+@Builder
+public class JobseekerSkillsGetResponse {
 
-    private int userId;
-    private int skillId;
-    private String skillName;
-    private String skillLevel;
+    private String message;
+    private List<skillsDTO> skills;
 }

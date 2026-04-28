@@ -1,7 +1,9 @@
 package com.jobzey.backend.jobseekerSkills.Controller;
 
-import com.jobzey.backend.jobseekerSkills.DTO.JobseekerSkillsRequest;
-import com.jobzey.backend.jobseekerSkills.DTO.JobseekerSkillsResponse;
+import com.jobzey.backend.jobseekerSkills.DTO.JobseekerSkillsAddRequest;
+import com.jobzey.backend.jobseekerSkills.DTO.JobseekerSkillsAddResponse;
+import com.jobzey.backend.jobseekerSkills.DTO.JobseekerSkillsGetRequest;
+import com.jobzey.backend.jobseekerSkills.DTO.JobseekerSkillsGetResponse;
 import com.jobzey.backend.jobseekerSkills.Model.JobseekerSkillsModel;
 import com.jobzey.backend.jobseekerSkills.Service.JobseekerSkillsService;
 import org.springframework.http.ResponseEntity;
@@ -18,13 +20,13 @@ public class JobseekerSkillsController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity<JobseekerSkillsResponse> createJobseekerSkill(
-            @RequestBody JobseekerSkillsRequest request
+    public ResponseEntity<JobseekerSkillsAddResponse> createJobseekerSkill(
+            @RequestBody JobseekerSkillsAddRequest request
             ) {
 
         JobseekerSkillsModel save = skillsService.createJobseekerSkills(request);
 
-        JobseekerSkillsResponse response = new JobseekerSkillsResponse();
+        JobseekerSkillsAddResponse response = new JobseekerSkillsAddResponse();
 
         response.setMessage("Skills saved Successfully");
         response.setSkillId(save.getSkillId());
@@ -35,4 +37,15 @@ public class JobseekerSkillsController {
 
         return ResponseEntity.ok(response);
     }
+
+    @GetMapping("/get")
+    public ResponseEntity<JobseekerSkillsGetResponse> getSkill(
+            @RequestBody JobseekerSkillsGetRequest request
+    ) {
+        JobseekerSkillsGetResponse response = skillsService.getSkills(request);
+
+        return ResponseEntity.ok(response);
+
+    }
+
 }
