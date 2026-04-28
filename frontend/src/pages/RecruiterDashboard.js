@@ -180,7 +180,7 @@ function RecruiterDashboard() {
           {/* Company Overview */}
           <div className="dashboard-card dashboard-card--bio">
             <h2 className="dashboard-card__title">Company Overview</h2>
-            <p className="dashboard-bio-text">
+            <p className="dashboard-bio-text" style={{"whiteSpace" : "pre-line"}}>
               {safe(userData.companyDescription)}
             </p>
           </div>
