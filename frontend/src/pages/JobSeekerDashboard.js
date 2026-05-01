@@ -9,10 +9,15 @@ function JobseekerDashboard() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const navigate = useNavigate();
+  const[userskills, setUserSkills] = useState(null);
 
   useEffect(function() {
     fetchUserProfile();
   }, []);
+
+  useEffect(()=> {
+    console.log(userskills)
+  }, [userskills])
 
   async function fetchUserProfile() {
     try {
@@ -34,6 +39,21 @@ function JobseekerDashboard() {
 
       const data = await response.json();
       setUserData(data);
+
+      const skills = await fetch("http://localhost:8080/api/dashboard/skills/get?userId=18", {
+        method : "GET",
+        headers: {
+          Authorization : `Bearer ${token}`,
+          
+        },
+        
+      })
+      const skillData = await skills.json();
+      setUserSkills(skillData?.skills);
+
+      
+
+
     } catch (err) {
       setError("Failed to load profile. Please try again.");
       console.error(err);
@@ -264,50 +284,17 @@ function JobseekerDashboard() {
               </div>
             </div>
 
-            {/* Professional Information */}
-            {/* <div className="dashboard-card">
-              <h2 className="dashboard-card__title">Professional Information</h2>
-              <div className="dashboard-info-list">
-                <div className="dashboard-info-item">
-                  <div className="dashboard-info-item__icon" style={{ background: "rgba(34, 197, 94, 0.1)", color: "#22c55e" }}>
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
-                      <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
-                    </svg>
-                  </div>
-                  <div className="dashboard-info-item__content">
-                    <span className="dashboard-info-item__label">Current Company</span>
-                    <span className="dashboard-info-item__value">{userData.currentCompany}</span>
-                  </div>
-                </div>
-
-                <div className="dashboard-info-item">
-                  <div className="dashboard-info-item__icon" style={{ background: "rgba(249, 115, 22, 0.1)", color: "#f97316" }}>
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <circle cx="12" cy="12" r="10"/>
-                      <polyline points="12 6 12 12 16 14"/>
-                    </svg>
-                  </div>
-                  <div className="dashboard-info-item__content">
-                    <span className="dashboard-info-item__label">Experience</span>
-                    <span className="dashboard-info-item__value">{userData.expYears} years</span>
-                  </div>
-                </div>
-
-                <div className="dashboard-info-item">
-                  <div className="dashboard-info-item__icon" style={{ background: "rgba(123, 94, 167, 0.1)", color: "#7b5ea7" }}>
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
-                      <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
-                    </svg>
-                  </div>
-                  <div className="dashboard-info-item__content">
-                    <span className="dashboard-info-item__label">Interested Domains</span>
-                    <span className="dashboard-info-item__value">{userData.interestedDomains}</span>
-                  </div>
-                </div>
+            {/* Skill section */}
+            <div className="dashboard-card">
+              <h2 className="dashboard-card__title">Skills</h2>
+              <div className="skill-containers">
+                {
+                  userskills.map((skill)=> (
+                    <div key={skill.skillId}><div style={{"fontSize": "25px"}}>{skill.skillName}</div> <p>{skill.skillLevel}</p></div>
+                  ))
+                }
               </div>
-            </div> */}
+            </div>
 
             {/* Links & Resources */}
             <div className="dashboard-card">

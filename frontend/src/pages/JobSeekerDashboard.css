@@ -609,3 +609,96 @@
     font-size: 1.1rem;
   }
 }
+
+
+/* ─── Skills Section ───────────────────────────────────── */
+.skill-containers {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 0.9rem;
+}
+
+/* Individual Skill Card */
+.skill-containers > div {
+  position: relative;
+  padding: 0.9rem 1rem;
+  border-radius: 14px;
+
+  background: linear-gradient(
+    145deg,
+    rgba(79,142,255,0.08),
+    rgba(123,94,167,0.06)
+  );
+
+  border: 1px solid rgba(255,255,255,0.08);
+
+  backdrop-filter: blur(10px);
+
+  transition: all 0.25s ease;
+  overflow: hidden;
+}
+
+/* Glow effect */
+.skill-containers > div::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(79,142,255,0.25),
+    transparent
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* Hover */
+.skill-containers > div:hover {
+  transform: translateY(-4px) scale(1.02);
+  border-color: rgba(79,142,255,0.35);
+  box-shadow: 0 10px 25px rgba(79,142,255,0.15);
+}
+
+.skill-containers > div:hover::before {
+  opacity: 1;
+}
+
+/* Skill Name */
+.skill-containers h2 {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 4px;
+  letter-spacing: 0.2px;
+}
+
+/* Skill Level Badge */
+.skill-containers p {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 100px;
+
+  background: rgba(255,255,255,0.06);
+  color: var(--text2);
+
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+/* Optional: Different colors based on level (if values match) */
+.skill-containers p:contains("Beginner") {
+  background: rgba(249,115,22,0.12);
+  color: #f97316;
+}
+
+.skill-containers p:contains("Intermediate") {
+  background: rgba(79,142,255,0.12);
+  color: #4f8eff;
+}
+
+.skill-containers p:contains("Advanced") {
+  background: rgba(34,197,94,0.12);
+  color: #22c55e;
+}
