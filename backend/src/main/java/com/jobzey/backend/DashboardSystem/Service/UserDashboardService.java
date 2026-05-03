@@ -74,6 +74,7 @@ public class UserDashboardService {
                     );
                     return JobseekerDetailsResponseDTO.builder()
                             .message("User profile fetched Successfully")
+                            .userId(user.getId())
                             .email(user.getEmail())
                             .username(user.getUsername())
                             .phone(user.getPhone())

@@ -35,12 +35,12 @@ public class JobseekerSkillsService {
         return skillsRepo.save(skill);
     }
 
-    public JobseekerSkillsGetResponse getSkills(JobseekerSkillsGetRequest request){
-        List<JobseekerSkillsModel> skillsList = skillsRepo.findAllByUserId(request.getUserId());
+    public JobseekerSkillsGetResponse getSkills(int userId){
+        List<JobseekerSkillsModel> skillsList = skillsRepo.findAllByUserId(userId);
 
-        if(skillsList.isEmpty()){
-            throw new SkillsNotFoundException("User skill not found");
-        }
+//        if(skillsList.isEmpty()){
+//            throw new SkillsNotFoundException("User skill not found");
+//        }
 
         List<skillsDTO> skills = skillsList.stream()
                 .map(

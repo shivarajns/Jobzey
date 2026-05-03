@@ -11,6 +11,7 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 public class JobseekerDetailsResponseDTO extends UserDashboardResponseDTO{
 
+    private int userId;
     private String bio;
     private String dob;
     private String gender;

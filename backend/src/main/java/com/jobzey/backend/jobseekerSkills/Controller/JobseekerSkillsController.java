@@ -40,9 +40,9 @@ public class JobseekerSkillsController {
 
     @GetMapping("/get")
     public ResponseEntity<JobseekerSkillsGetResponse> getSkill(
-            @RequestBody JobseekerSkillsGetRequest request
+            @RequestParam int userId
     ) {
-        JobseekerSkillsGetResponse response = skillsService.getSkills(request);
+        JobseekerSkillsGetResponse response = skillsService.getSkills(userId);
 
         return ResponseEntity.ok(response);
 
