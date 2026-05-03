@@ -1,0 +1,77 @@
+package com.jobzey.backend.JobApplicationSystem.Model;
+
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.time.LocalDateTime;
+
+@Entity
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+@Table(name = "jobs")
+public class Jobs {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
+    @Column(nullable = false)
+    private int recruiterId;
+
+    @Column(nullable = false)
+    private String title;
+
+    @Column(nullable = false)
+    private String description;
+
+    private int minSalary;
+
+    private int maxSalary;
+
+    private String currencyType;
+
+    @Enumerated(EnumType.STRING)
+    private JobType jobtype;
+
+    private int minExp;
+
+    private int maxExp;
+
+    @Column(updatable = false)
+    private LocalDateTime createdAt;
+
+    private LocalDateTime updatedAt;
+
+    @Column(nullable = false)
+    private int categoryId;
+
+    @Enumerated(EnumType.STRING)
+    private Status status;
+
+
+    @PrePersist
+    public void prePersist(){
+        this.createdAt = LocalDateTime.now();
+        this.updatedAt = LocalDateTime.now();
+    }
+
+
+    public enum JobType{
+       FULL_TIME,
+        PART_TIME,
+        CONTRACT,
+        INTERNSHIP,
+        REMOTE
+    }
+
+    public enum Status{
+        ACTIVE,
+        CLOSED,
+        DRAFT
+    }
+}
