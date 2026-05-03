@@ -13,7 +13,7 @@ import JobseekerEditProfile from "./pages/JobseekerEditProfile";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import RecruiterEditProfile from "./pages/RecruiterEditProfile"
-
+import Jobs from "./pages/Jobs";
 
 function App() {
   return (
@@ -62,6 +62,15 @@ function App() {
             element={
               <ProtectedRoute>
                 <RecruiterEditProfile />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/jobs"
+            element={
+              <ProtectedRoute>
+                <Jobs/>
               </ProtectedRoute>
             }
           />

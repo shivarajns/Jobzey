@@ -1,0 +1,76 @@
+/* Container */
+.jobs-search-bar-cnt {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  max-width: 700px;
+  margin: 2rem auto;
+
+  padding: 0.5rem;
+  border-radius: 50px;
+
+  background: #01041f;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+
+  transition: all 0.3s ease;
+}
+
+/* Focus effect */
+.jobs-search-bar-cnt:focus-within {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Input */
+.job-search-bar {
+  flex: 1;
+  border: none;
+  outline: none;
+
+  padding: 0.9rem 1.2rem;
+  font-size: 0.95rem;
+
+  border-radius: 50px;
+  background: transparent;
+}
+
+/* Button */
+.jobs-search-button {
+  border: none;
+  outline: none;
+
+  padding: 0.8rem 1.5rem;
+  border-radius: 50px;
+
+  background: linear-gradient(135deg, #4f46e5, #7c3aed);
+  color: white;
+
+  font-size: 0.9rem;
+  font-weight: 500;
+
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Hover */
+.jobs-search-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 5px 15px rgba(79, 70, 229, 0.4);
+}
+
+/* Active */
+.jobs-search-button:active {
+  transform: scale(0.97);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .jobs-search-bar-cnt {
+    flex-direction: column;
+    border-radius: 20px;
+  }
+
+  .jobs-search-button {
+    width: 100%;
+  }
+}

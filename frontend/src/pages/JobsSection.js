@@ -1,12 +1,13 @@
 import React from "react";
 import "../pages/JobsSection.css"
 import { useState, useEffect } from "react";
-
+import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function JobSection() {
     const [jobData, setJobData] = useState([]);
     const [error, setError] = useState("");
-
+    const navigate = useNavigate('/jobs')
 
     useEffect(() => {
         fetchSuggestedSkill();
@@ -42,12 +43,13 @@ function JobSection() {
                     {/* Header */}
                     <div className="job-header">
                         <h2>Suggested Jobs</h2>
-                        <button
+                        <Link
                             className="view-more-btn"
-                            onClick={() => window.location.href = "/jobs"}
+                            to="/jobs"
+                            style={{"textDecoration":"none"}}
                         >
                             View More →
-                        </button>
+                        </Link>
                     </div>
 
                     {/* Slider */}
@@ -66,7 +68,7 @@ function JobSection() {
 
                                 <div className="job-details">
                                     <span>💰 {job.minSalary / 100000} - {job.maxSalary / 100000} LPA</span>
-                                    {/* <span>🧑‍💻 {job.minExp} - {job.maxExp} yrs</span> */}
+                                    <span>🧑‍💻 {job.minExp} - {job.maxExp} yrs</span>
                                 </div>
 
                                 <div className="job-footer">
