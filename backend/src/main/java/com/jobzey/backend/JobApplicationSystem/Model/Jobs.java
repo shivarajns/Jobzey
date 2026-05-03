@@ -29,17 +29,22 @@ public class Jobs {
     @Column(nullable = false)
     private String description;
 
+
     private int minSalary;
 
     private int maxSalary;
 
+    @Column(name = "currency")
     private String currencyType;
 
     @Enumerated(EnumType.STRING)
-    private JobType jobtype;
+    @Column(name="job_type")
+    private JobType jobType;
 
+    @Column(name = "experience_min")
     private int minExp;
 
+    @Column(name = "experience_max")
     private int maxExp;
 
     @Column(updatable = false)
