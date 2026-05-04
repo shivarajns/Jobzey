@@ -39,7 +39,9 @@ public class SecurityConfig {
                 )
                 .authorizeHttpRequests(auth -> auth.requestMatchers(
                         "/api/auth/test/public",
-                        "/api/auth/register/**"
+                        "/api/auth/register/**",
+                        "/api/jobs/get",
+                        "/api/jobs/get/suggested"
                 ).permitAll().anyRequest().authenticated()
                 )
                 .addFilterBefore(
