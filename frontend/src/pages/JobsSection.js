@@ -21,10 +21,7 @@ function JobSection() {
         try {
             const token = localStorage.getItem("token")
             const response = await fetch("http://localhost:8080/api/jobs/get/suggested", {
-                method: "GET",
-                headers: {
-                    Authorization: `Bearer ${token}`
-                }
+                method: "GET"
             })
             const data = await response.json()
             setJobData(data);
