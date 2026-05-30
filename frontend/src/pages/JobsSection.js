@@ -13,9 +13,9 @@ function JobSection() {
         fetchSuggestedSkill();
     }, [])
 
-    useEffect(() => {
-        console.log(jobData)
-    }, [jobData])
+    // useEffect(() => {
+    //     console.log(jobData)
+    // }, [jobData])
 
     const fetchSuggestedSkill = async () => {
         try {

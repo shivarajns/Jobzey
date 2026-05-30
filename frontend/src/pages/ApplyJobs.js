@@ -41,8 +41,8 @@ function Applyjob(){
     
     return(
         <>
-            <h1>{job.title}</h1>
-            <p>{job.Description}</p>            
+            <h1>{job?.title}</h1>
+            <p>{job?.Description}</p>            
         </>
     )
 }

@@ -15,9 +15,6 @@ function Jobs() {
         fetchJobData();
     }, [])
 
-    useEffect(() => {
-        console.log(jobData)
-    }, [jobData])
 
     const fetchJobData = async () => {
         try {
