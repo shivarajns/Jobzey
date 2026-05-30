@@ -1,11 +1,10 @@
 package com.jobzey.backend.JobListingSystem.Controller;
 
+import com.jobzey.backend.JobListingSystem.DTO.GetJobByIdResponseDTO;
 import com.jobzey.backend.JobListingSystem.Model.Jobs;
 import com.jobzey.backend.JobListingSystem.Service.JobsService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -32,4 +31,14 @@ public class JobsController {
         return ResponseEntity.ok(response);
 
     }
+
+    @GetMapping("/{jobId}")
+    public ResponseEntity<GetJobByIdResponseDTO> getJobDetailsById(
+            @PathVariable int jobId
+    ){
+        GetJobByIdResponseDTO response = jobsService.getJobById(jobId);
+
+        return ResponseEntity.ok(response);
+    }
+
 }
