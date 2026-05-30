@@ -63,3 +63,5 @@ public class jobApplicationModel {
         this.updatedOn = LocalDateTime.now();
     }
 }
+
+//job Application System.
