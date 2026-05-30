@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import "../pages/Jobs.css"
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Jobs() {
 
@@ -8,6 +9,7 @@ function Jobs() {
     const [jobData, setJobData] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState();
+    const navigate = useNavigate()
 
     useEffect(() => {
         fetchJobData();
@@ -86,7 +88,9 @@ function Jobs() {
                                 ₹ {job.minSalary.toLocaleString()} - ₹ {job.maxSalary.toLocaleString()}
                             </div>
 
-                            <button className="apply-btn">Apply Now</button>
+                            <button className="apply-btn"
+                                onClick={()=> navigate(`/apply/${job.id}`)}
+                            >Apply Now</button>
 
                             <span className="posted-date">
                                 {new Date(job.createdAt).toLocaleDateString()}

@@ -14,6 +14,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import RecruiterEditProfile from "./pages/RecruiterEditProfile"
 import Jobs from "./pages/Jobs";
+import Applyjob from "./pages/ApplyJobs";
 
 function App() {
   return (
@@ -71,6 +72,15 @@ function App() {
             element={
               <ProtectedRoute>
                 <Jobs/>
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/apply/:jobId"
+            element={
+              <ProtectedRoute>
+                <Applyjob/>
               </ProtectedRoute>
             }
           />
