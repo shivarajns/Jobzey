@@ -22,7 +22,7 @@ import java.time.LocalDateTime;
                 )
         }
 )
-public class jobApplicationModel {
+public class JobApplicationModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -63,5 +63,3 @@ public class jobApplicationModel {
         this.updatedOn = LocalDateTime.now();
     }
 }
-
-//job Application System.
