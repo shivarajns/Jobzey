@@ -21,9 +21,9 @@ function JobseekerDashboard() {
     }
   }, [userData])
 
-  useEffect(() => {
-    console.log(userSkill);
-  }, [userSkill])
+  // useEffect(() => {
+  //   console.log(userSkill);
+  // }, [userSkill])
 
   async function fetchUserProfile() {
     try {

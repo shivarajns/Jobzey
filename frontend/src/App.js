@@ -70,18 +70,18 @@ function App() {
           <Route
             path="/jobs"
             element={
-              <ProtectedRoute>
+              
                 <Jobs/>
-              </ProtectedRoute>
+              
             }
           />
 
           <Route
             path="/apply/:jobId"
             element={
-              <ProtectedRoute>
+              
                 <Applyjob/>
-              </ProtectedRoute>
+              
             }
           />
         
