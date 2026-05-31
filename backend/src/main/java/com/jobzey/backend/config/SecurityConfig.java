@@ -41,7 +41,8 @@ public class SecurityConfig {
                         "/api/auth/test/public",
                         "/api/auth/register/**",
                         "/api/jobs/get",
-                        "/api/jobs/get/suggested"
+                        "/api/jobs/get/suggested",
+                        "/api/jobs/*"
                 ).permitAll().anyRequest().authenticated()
                 )
                 .addFilterBefore(

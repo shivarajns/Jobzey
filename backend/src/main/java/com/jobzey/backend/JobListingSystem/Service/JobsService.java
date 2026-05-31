@@ -29,6 +29,17 @@ public class JobsService {
         return GetJobByIdResponseDTO.builder()
                 .title(jobs.getTitle())
                 .Description(jobs.getDescription())
+                .minSalary(jobs.getMinSalary())
+                .maxSalary(jobs.getMaxSalary())
+                .currency(jobs.getCurrencyType())
+                .location(jobs.getLocation())
+                .jobType(String.valueOf(jobs.getJobType()))
+                .experienceMin(jobs.getMinExp())
+                .experienceMax(jobs.getMaxExp())
+                .status(String.valueOf(jobs.getStatus()))
+                .expiresAt(jobs.getExpiresAt())
+                .createdAt(jobs.getCreatedAt())
+                .categoryId(jobs.getCategoryId())
                 .build();
     }
 }

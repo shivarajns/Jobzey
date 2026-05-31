@@ -47,6 +47,12 @@ public class Jobs {
     @Column(name = "experience_max")
     private int maxExp;
 
+    @Column(name = "location")
+    private String location;
+
+    @Column(name = "expires_at", nullable = false)
+    private LocalDateTime expiresAt;
+
     @Column(updatable = false)
     private LocalDateTime createdAt;
 
