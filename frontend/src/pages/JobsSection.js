@@ -68,11 +68,11 @@ function JobSection() {
                                     <span>🧑‍💻 {job.minExp} - {job.maxExp} yrs</span>
                                 </div>
 
-                                <div className="job-footer">
-                                    <button className="apply-btn">
+                                {/* <div className="job-footer">
+                                    <button className="apply-btn" onClick={()=> console.log("clicked")}>
                                         Apply Now
                                     </button>
-                                </div>
+                                </div> */}
 
                             </div>
                         ))}
