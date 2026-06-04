@@ -61,7 +61,9 @@ function Navbar() {
               }}>Jobs</Link>
             </li> */}
             <li>
-              <Link to="/jobs">Jobs</Link>
+              <Link to={localStorage.getItem("userRole") === "recruiter" ? "/recruiter/job/create" : "/jobs"}
+              >{localStorage.getItem("userRole") === "recruiter" ? "Create Job" : "Jobs"}
+                </Link>
             </li>
             <li>
               <Link to="/home#features" onClick={function () {

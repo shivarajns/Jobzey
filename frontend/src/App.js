@@ -15,6 +15,7 @@ import "react-toastify/dist/ReactToastify.css";
 import RecruiterEditProfile from "./pages/RecruiterEditProfile"
 import Jobs from "./pages/Jobs";
 import Applyjob from "./pages/ApplyJobs";
+import JobPost from "./pages/JobPost";
 
 function App() {
   return (
@@ -82,6 +83,13 @@ function App() {
               
                 <Applyjob/>
               
+            }
+          />
+
+          <Route
+            path="/recruiter/job/create"
+            element={
+                <JobPost/>
             }
           />
         
