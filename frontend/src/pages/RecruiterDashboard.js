@@ -34,6 +34,7 @@ function RecruiterDashboard() {
 
       const data = await response.json();
       setUserData(data);
+      localStorage.setItem("userId", data?.userId)
     } catch (err) {
       setError("Failed to load profile. Please try again.");
       console.error(err);
@@ -72,6 +73,10 @@ function RecruiterDashboard() {
       case "SIZE_500_PLUS": return "500+ employees";
       default: return "Not provided";
     }
+  }
+
+  function handlePostJob(){
+    navigate("/recruiter/job/create")
   }
 
   const safe = (val) => val || "Not provided";
@@ -135,6 +140,12 @@ function RecruiterDashboard() {
           </div>
 
           <div className="dashboard-header__actions">
+            <button
+              onClick={handlePostJob}
+              className="dashboard-btn dashboard-btn--secondary"
+            >
+              Create Job
+            </button>
             <button
               onClick={handleEdit}
               className="dashboard-btn dashboard-btn--secondary"

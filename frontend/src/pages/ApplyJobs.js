@@ -116,7 +116,7 @@ function Applyjob() {
             const data = await response.json()
             console.log(data?.message)
 
-            if(data?.message === "Applied for This job"){
+            if(data?.message === "Applied Successfully"){
                 toast.success(data?.message);
             } else {
                 toast.warning(data?.message);
@@ -171,7 +171,7 @@ function Applyjob() {
                 </div>
             </div>
 
-            <div className="applyjob-description-section">
+            <div className="applyjob-description-section" style={{"whiteSpace" : "pre-line"}}>
                 <h2>Description</h2>
                 <p>{job?.Description}</p>
             </div>
@@ -200,7 +200,9 @@ function Applyjob() {
 
                 <div className="applyjob-item">
                     <span>Expires At</span>
-                    <p>{job?.expiresAt?.split("T")[0]}</p>
+
+                    <p>{job?.expiresAt != null ? job?.expiresAt?.split("T", " ") : "Not Disclosed"}</p>
+                    {/* <p>{job?.expiresAt?.split("T")[0]}</p> */}
                 </div>
 
             </div>
