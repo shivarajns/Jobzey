@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import "../pages/Jobs.css"
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import{toast} from "react-toastify"
 
 function Jobs() {
 
@@ -28,14 +29,15 @@ function Jobs() {
             console.error(error);
         }
 
-
-        if (loading) {
-            return (
-                <div className="loading-screen">
-                    <p>Loading Jobs</p>
+        if(loading){
+            return(
+                <div className="jobs-Loading">
+                    <h1>Loading jobs..</h1>
                 </div>
             )
         }
+
+        
     }
 
 
