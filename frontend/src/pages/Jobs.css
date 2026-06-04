@@ -151,6 +151,9 @@
   font-size: 0.95rem;
   line-height: 1.5;
   max-width: 700px;
+  min-height: 65px;
+  max-height: 65px;
+  overflow: hidden;
 }
 
 /* Details */

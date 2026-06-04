@@ -73,7 +73,7 @@ function Jobs() {
                                 </span>
                             </div>
 
-                            <p className="job-description">{job.description}</p>
+                            <p className="job-description" style={{"whiteSpace" : "pre-line"}}>{job.description}</p>
 
                             <div className="job-details">
                                 <span>💼 {job.jobType.replace("_", " ")}</span>
