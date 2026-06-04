@@ -31,20 +31,21 @@ public class JobApplicationService {
     @Transactional
     public JobApplicationResponseDTO applyJob(JobApplicationRequestDTO requestDTO){
 
-        Optional<Jobs> jobApplicationModel = jobsRepository.findById(requestDTO.getJobId());
-
-        if(jobApplicationModel.isPresent()){
-            return JobApplicationResponseDTO.builder()
-                    .message("User Already Register For this Job")
-                    .build();
-        }
-
-
         Jobs job = jobsRepository.findById(requestDTO.getJobId()).orElseThrow(
                 () ->
                         new JobNotFoundException("Job Not Found")
 
         );
+        Optional<JobApplicationModel> existingApplication = repository.findByJob_IdAndJobseekerProfile_User_Id(
+                requestDTO.getJobId(),
+                requestDTO.getJobseekerId()
+        );
+
+        if(existingApplication.isPresent()){
+            return JobApplicationResponseDTO.builder()
+                    .message("User Already Applied for This job")
+                    .build();
+        }
 
         JobseekerProfile jobseekerProfile = jobseekerProfileRepository.findByUser_Id(requestDTO.getJobseekerId()).orElseThrow(
                 ()-> new ProfileNotFoundException("Job seeker profile not found")

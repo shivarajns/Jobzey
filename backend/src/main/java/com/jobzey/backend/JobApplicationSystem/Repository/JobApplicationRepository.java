@@ -6,5 +6,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.Optional;
 
 public interface JobApplicationRepository extends JpaRepository<JobApplicationModel, Long> {
-    Optional<JobApplicationModel> findByJob_Id(int jobId);
+    Optional<JobApplicationModel>
+    findByJob_IdAndJobseekerProfile_User_Id(
+            Long jobId,
+            int userId
+    );
 }

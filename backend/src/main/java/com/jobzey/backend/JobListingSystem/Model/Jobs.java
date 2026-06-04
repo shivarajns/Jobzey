@@ -50,7 +50,7 @@ public class Jobs {
     @Column(name = "location")
     private String location;
 
-    @Column(name = "expires_at", nullable = false)
+    @Column(name = "expires_at")
     private LocalDateTime expiresAt;
 
     @Column(updatable = false)
