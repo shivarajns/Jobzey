@@ -11,6 +11,7 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 public class RecruiterDashboardResponseDTO extends UserDashboardResponseDTO{
 
+    private int userId;
     private String jobTitle;
     private String companyName;
     private String companyWebsite;
