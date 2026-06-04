@@ -52,13 +52,16 @@ function Navbar() {
                 }, 100);
               }}>Home</Link>
             </li>
-            <li>
+            {/* <li>
               <Link to="/home#jobs" onClick={function () {
                 setMenuOpen(false);
                 setTimeout(function () {
                    document.getElementById("jobs")?.scrollIntoView({ behavior: "smooth" });
                 }, 100);
               }}>Jobs</Link>
+            </li> */}
+            <li>
+              <Link to="/jobs">Jobs</Link>
             </li>
             <li>
               <Link to="/home#features" onClick={function () {
