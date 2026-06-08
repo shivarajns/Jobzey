@@ -10,6 +10,7 @@ function Navbar() {
   const navigate = useNavigate();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const{getDashboardPath} = useAuth();
 
   useEffect(function () {
     function handleScroll() {
@@ -66,29 +67,20 @@ function Navbar() {
                 </Link>
             </li>
             <li>
-              <Link to="/home#features" onClick={function () {
-                setMenuOpen(false);
-                setTimeout(function () {
-                  document.getElementById("features")?.scrollIntoView({ behavior: "smooth" });
-                }, 100);
-              }}>Features</Link>
+              <Link to="/applied-jobs">Applied Jobs</Link>
             </li>
             <li>
-              <Link to="/home#how-it-works" onClick={function () {
-                setMenuOpen(false);
-                setTimeout(function () {
-                  document.getElementById("how-it-works")?.scrollIntoView({ behavior: "smooth" });
-                }, 100);
-              }}>How it works</Link>
+              <Link to={getDashboardPath()}
+              >Dashboard</Link>
             </li>
-            <li>
+            {/* <li>
               <Link to="/home#about" onClick={function () {
                 setMenuOpen(false);
                 setTimeout(function () {
                   document.getElementById("about")?.scrollIntoView({ behavior: "smooth" });
                 }, 100);
               }}>About</Link>
-            </li>
+            </li> */}
           </ul>
 
           <div className="navbar__actions">

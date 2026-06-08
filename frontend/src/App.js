@@ -16,6 +16,7 @@ import RecruiterEditProfile from "./pages/RecruiterEditProfile"
 import Jobs from "./pages/Jobs";
 import Applyjob from "./pages/ApplyJobs";
 import JobPost from "./pages/JobPost";
+import AppliedJobs from "./pages/AppliedJobs";
 
 function App() {
   return (
@@ -80,8 +81,9 @@ function App() {
           <Route
             path="/apply/:jobId"
             element={
-              
-                <Applyjob/>
+                <ProtectedRoute>
+                  <Applyjob/>
+                </ProtectedRoute>
               
             }
           />
@@ -89,8 +91,19 @@ function App() {
           <Route
             path="/recruiter/job/create"
             element={
+              <ProtectedRoute>
                 <JobPost/>
+              </ProtectedRoute>
             }
+          />
+
+          <Route 
+            path="/applied-jobs"
+            element={
+              <ProtectedRoute>
+                <AppliedJobs/>
+              </ProtectedRoute>
+            }          
           />
         
           

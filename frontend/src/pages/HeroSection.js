@@ -49,10 +49,12 @@ function HeroSection() {
               </Link>
             )
           )}
+
+          <Link to="/jobs" className="hero__cta-secondary">Search Jobs</Link>
           
-          <a href="#how-it-works" className="hero__cta-secondary">
-            See how it works
-          </a>
+          {/* <a href="#how-it-works" className="hero__cta-secondary">
+            Search Jobs
+          </a> */}
         </div>
 
         <div className="hero__stats">
