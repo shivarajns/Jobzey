@@ -3,20 +3,21 @@ package com.jobzey.backend.JobApplicationSystem.Model;
 import com.jobzey.backend.JobListingSystem.Model.Jobs;
 import com.jobzey.backend.model.JobseekerProfile;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
 @Data
 @Table(
         name = "applications",
         uniqueConstraints = {
                 @UniqueConstraint(
+
                         name = "uk_job_jobseeker",
                         columnNames = {"job_id", "jobseeker_id"}
                 )

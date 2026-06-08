@@ -26,7 +26,7 @@ public class Jobs {
     @Column(nullable = false)
     private String title;
 
-    @Column(nullable = false)
+    @Column(columnDefinition = "TEXT")
     private String description;
 
 
