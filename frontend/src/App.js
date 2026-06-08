@@ -8,7 +8,7 @@ import Home from "./pages/Home";
 import Navbar from "./Components/Navbar";
 import RecruiterSignup from "./pages/RecruiterSignup";
 import RecruiterDashboard from "./pages/RecruiterDashboard";
-import JobseekerDashboard from "./pages/JobseekerDashboard";
+import JobSeekerDashboard from "./pages/JobSeekerDashboard";
 import JobseekerEditProfile from "./pages/JobseekerEditProfile";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -36,7 +36,7 @@ function App() {
             path="/jobseeker/dashboard"
             element={
               <ProtectedRoute>
-                <JobseekerDashboard />
+                <JobSeekerDashboard />
               </ProtectedRoute>
             }
           />

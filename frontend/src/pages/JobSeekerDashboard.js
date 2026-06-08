@@ -1,11 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import auth from "../Firebase/FirebaseConfig";
 import { signOut } from "firebase/auth";
-import "./JobseekerDashboard.css";
+import "./JobSeekerDashboard.css";
 import { toast } from "react-toastify";
 
-function JobseekerDashboard() {
+function JobSeekerDashboard() {
   const [userData, setUserData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -14,22 +14,7 @@ function JobseekerDashboard() {
   const [resumeFile, setResumeFile] = useState(null);
   const [uploading, setUploading] = useState(false);
 
-  useEffect(function () {
-    fetchUserProfile();
-  }, []);
-
-  useEffect(() => {
-    if (userData?.userId) {
-      fetchUserSkill(userData.userId);
-    }
-    localStorage.setItem("userId", userData?.userId)
-  }, [userData])
-
-  // useEffect(() => {
-  //   console.log(userSkill);
-  // }, [userSkill])
-
-  async function fetchUserProfile() {
+  const fetchUserProfile = useCallback(async () => {
     try {
       const token = localStorage.getItem("token");
       if (!token) {
@@ -56,7 +41,22 @@ function JobseekerDashboard() {
     } finally {
       setLoading(false);
     }
-  }
+  }, [navigate]);
+
+  useEffect(() => {
+    fetchUserProfile();
+  }, [fetchUserProfile]);
+
+  useEffect(() => {
+    if (userData?.userId) {
+      fetchUserSkill(userData.userId);
+    }
+    localStorage.setItem("userId", userData?.userId)
+  }, [userData])
+
+  // useEffect(() => {
+  //   console.log(userSkill);
+  // }, [userSkill])
 
   const fetchUserSkill = async (userId) => {
     try {
@@ -279,126 +279,148 @@ function JobseekerDashboard() {
             </div>
           )}
 
-          {/* Grid Layout */}
-          <div className="dashboard-grid">
+          <div className="profile-flow">
 
-            {/* Contact Information */}
-            <div className="dashboard-card">
-              <h2 className="dashboard-card__title">Contact Information</h2>
-              <div className="dashboard-info-list">
-                <div className="dashboard-info-item">
-                  <div className="dashboard-info-item__icon" style={{ background: "rgba(79, 142, 255, 0.1)", color: "#4f8eff" }}>
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <rect x="2" y="4" width="20" height="16" rx="2" />
-                      <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+            <section className="profile-section profile-section--contact">
+              <div className="profile-section__header">
+                <div>
+                  <h2 className="dashboard-card__title">Contact Information</h2>
+                  <p className="profile-section__subtitle">
+                    Recruiters can reach you quickly with the right contact details.
+                  </p>
+                </div>
+              </div>
+
+              <div className="profile-info-grid">
+                <div className="profile-info-card">
+                  <div className="profile-info-card__icon" style={{ background: "rgba(79, 142, 255, 0.12)", color: "#4f8eff" }}>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M4 4h16v16H4z" />
+                      <path d="M22 6 12 13 2 6" />
                     </svg>
                   </div>
-                  <div className="dashboard-info-item__content">
-                    <span className="dashboard-info-item__label">Email</span>
-                    <span className="dashboard-info-item__value">{userData.email}</span>
+                  <div className="profile-info-card__details">
+                    <span className="profile-info-card__label">Email</span>
+                    <span className="profile-info-card__value">{userData.email}</span>
                   </div>
                 </div>
 
-                <div className="dashboard-info-item">
-                  <div className="dashboard-info-item__icon" style={{ background: "rgba(34, 197, 94, 0.1)", color: "#22c55e" }}>
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <div className="profile-info-card">
+                  <div className="profile-info-card__icon" style={{ background: "rgba(34, 197, 94, 0.12)", color: "#22c55e" }}>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                       <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
                     </svg>
                   </div>
-                  <div className="dashboard-info-item__content">
-                    <span className="dashboard-info-item__label">Phone</span>
-                    <span className="dashboard-info-item__value">{userData.phone}</span>
+                  <div className="profile-info-card__details">
+                    <span className="profile-info-card__label">Phone</span>
+                    <span className="profile-info-card__value">{userData.phone}</span>
                   </div>
                 </div>
 
-                <div className="dashboard-info-item">
-                  <div className="dashboard-info-item__icon" style={{ background: "rgba(249, 115, 22, 0.1)", color: "#f97316" }}>
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <div className="profile-info-card">
+                  <div className="profile-info-card__icon" style={{ background: "rgba(249, 115, 22, 0.13)", color: "#f97316" }}>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                       <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
                       <circle cx="12" cy="10" r="3" />
                     </svg>
                   </div>
-                  <div className="dashboard-info-item__content">
-                    <span className="dashboard-info-item__label">Location</span>
-                    <span className="dashboard-info-item__value">{userData.location}</span>
+                  <div className="profile-info-card__details">
+                    <span className="profile-info-card__label">Location</span>
+                    <span className="profile-info-card__value">{userData.location}</span>
                   </div>
                 </div>
               </div>
-            </div>
+            </section>
 
-            {/* Personal Details */}
-            <div className="dashboard-card">
-              <h2 className="dashboard-card__title">Personal Details</h2>
-              <div className="dashboard-info-list">
-                <div className="dashboard-info-item">
-                  <div className="dashboard-info-item__icon" style={{ background: "rgba(123, 94, 167, 0.1)", color: "#7b5ea7" }}>
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <section className="profile-section profile-section--personal">
+              <div className="profile-section__header">
+                <div>
+                  <h2 className="dashboard-card__title">Personal Details</h2>
+                  <p className="profile-section__subtitle">
+                    A clean view of your professional profile details.
+                  </p>
+                </div>
+              </div>
+
+              <div className="profile-detail-grid">
+                <div className="profile-info-card">
+                  <div className="profile-info-card__icon" style={{ background: "rgba(123, 94, 167, 0.14)", color: "#7b5ea7" }}>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                       <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
                       <line x1="16" y1="2" x2="16" y2="6" />
                       <line x1="8" y1="2" x2="8" y2="6" />
                       <line x1="3" y1="10" x2="21" y2="10" />
                     </svg>
                   </div>
-                  <div className="dashboard-info-item__content">
-                    <span className="dashboard-info-item__label">Date of Birth</span>
-                    <span className="dashboard-info-item__value">{new Date(userData.dob).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+                  <div className="profile-info-card__details">
+                    <span className="profile-info-card__label">Date of Birth</span>
+                    <span className="profile-info-card__value">{new Date(userData.dob).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
                   </div>
                 </div>
 
-                <div className="dashboard-info-item">
-                  <div className="dashboard-info-item__icon" style={{ background: "rgba(79, 142, 255, 0.1)", color: "#4f8eff" }}>
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <div className="profile-info-card">
+                  <div className="profile-info-card__icon" style={{ background: "rgba(79, 142, 255, 0.12)", color: "#4f8eff" }}>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                       <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
                       <circle cx="12" cy="7" r="4" />
                     </svg>
                   </div>
-                  <div className="dashboard-info-item__content">
-                    <span className="dashboard-info-item__label">Gender</span>
-                    <span className="dashboard-info-item__value" style={{ textTransform: "capitalize" }}>{userData.gender}</span>
+                  <div className="profile-info-card__details">
+                    <span className="profile-info-card__label">Gender</span>
+                    <span className="profile-info-card__value" style={{ textTransform: "capitalize" }}>{userData.gender}</span>
                   </div>
                 </div>
               </div>
-            </div>
+            </section>
 
-            {/* Skills Section */}
-            <div className="dashboard-card">
-              <h2 className="dashboard-card__title">Skills</h2>
+            <section className="profile-section profile-section--skills">
+              <div className="profile-section__header">
+                <div>
+                  <h2 className="dashboard-card__title">Skills</h2>
+                  <p className="profile-section__subtitle">
+                    Modern skill cards help recruiters scan your strengths at a glance.
+                  </p>
+                </div>
+              </div>
 
-              <div className="skill-containers">
+              <div className="skills-grid">
                 {Array.isArray(userSkill?.skills) && userSkill.skills.length > 0 ? (
                   userSkill.skills.map((skill) => (
-                    <div key={skill.skillId}>
-                      <h2 style={{ "fontSize": "20px" }}>{skill.skillName}</h2>
-                      <p
-                        className={`skill-level ${skill.skillLevel?.toLowerCase().includes("beginner")
+                    <div key={skill.skillId} className="skill-chip">
+                      <span className="skill-chip__name">{skill.skillName}</span>
+                      <span
+                        className={`skill-badge ${skill.skillLevel?.toLowerCase().includes("beginner")
                           ? "beginner"
                           : skill.skillLevel?.toLowerCase().includes("intermediate")
                             ? "intermediate"
                             : skill.skillLevel?.toLowerCase().includes("advanced")
                               ? "advanced"
-                              : ""
-                          }`}
+                              : ""}
+                        `}
                       >
                         {skill.skillLevel}
-                      </p>
+                      </span>
                     </div>
                   ))
                 ) : (
-                  <div className="skills-empty">
+                  <div className="portfolio-card portfolio-card--empty">
                     <p>No skills added yet</p>
                   </div>
                 )}
               </div>
-            </div>
+            </section>
 
+            <section className="profile-section profile-section--resume">
+              <div className="profile-section__header">
+                <div>
+                  <h2 className="dashboard-card__title">Resume</h2>
+                  <p className="profile-section__subtitle">
+                    Present your latest resume with a recruiter-ready upload experience.
+                  </p>
+                </div>
+              </div>
 
-            {/* Links & Resources */}
-            {/* Resume & Portfolio */}
-            <div className="dashboard-card dashboard-card--full">
-              <h2 className="dashboard-card__title">Resume & Portfolio</h2>
-
-              <div className="resume-section">
-
+              <div className="resume-panel">
                 <div className="resume-upload-card">
                   <div className="resume-upload-card__header">
                     <div>
@@ -408,30 +430,18 @@ function JobseekerDashboard() {
                   </div>
 
                   <div className="resume-upload-body">
-
                     {userData.resumeFileName ? (
                       <div className="resume-current-file">
                         <div>
-                          <span className="resume-current-file__label">
-                            Current Resume
-                          </span>
-
+                          <span className="resume-current-file__label">Current Resume</span>
                           <h4>{userData.resumeFileName}</h4>
                         </div>
-
-                        <a
-                          href={userData.resumeUrl}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="resume-view-btn"
-                        >
+                        <a href={userData.resumeUrl} target="_blank" rel="noreferrer" className="resume-view-btn">
                           View Resume
                         </a>
                       </div>
                     ) : (
-                      <p className="resume-empty">
-                        No resume uploaded yet
-                      </p>
+                      <p className="resume-empty">No resume uploaded yet</p>
                     )}
 
                     <input
@@ -442,47 +452,44 @@ function JobseekerDashboard() {
                       hidden
                     />
 
-                    <label
-                      htmlFor="resume-upload"
-                      className="resume-upload-zone"
-                    >
-                      <span>
-                        {resumeFile
-                          ? resumeFile.name
-                          : "Choose Resume"}
-                      </span>
+                    <label htmlFor="resume-upload" className="resume-upload-zone">
+                      <span>{resumeFile ? resumeFile.name : "Choose Resume"}</span>
                     </label>
 
-                    <button
-                      className="dashboard-btn dashboard-btn--primary"
-                      onClick={handleResumeUpload}
-                      disabled={uploading}
-                    >
+                    <button className="dashboard-btn dashboard-btn--primary" onClick={handleResumeUpload} disabled={uploading}>
                       {uploading ? "Uploading..." : "Upload Resume"}
                     </button>
                   </div>
                 </div>
+              </div>
+            </section>
 
-                {userData.portfolioUrl && (
+            <section className="profile-section profile-section--portfolio">
+              <div className="profile-section__header">
+                <div>
+                  <h2 className="dashboard-card__title">Portfolio</h2>
+                  <p className="profile-section__subtitle">
+                    Share your professional work and make your profile easy to explore.
+                  </p>
+                </div>
+              </div>
+
+              <div className="portfolio-panel">
+                {userData.portfolioUrl ? (
                   <div className="portfolio-card">
                     <h3>Portfolio</h3>
-
-                    <p>
-                      Showcase your projects and professional work.
-                    </p>
-
-                    <a
-                      href={userData.portfolioUrl}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="portfolio-link"
-                    >
+                    <p>Showcase your projects and professional work.</p>
+                    <a href={userData.portfolioUrl} target="_blank" rel="noreferrer" className="portfolio-link">
                       Visit Portfolio →
                     </a>
                   </div>
+                ) : (
+                  <div className="portfolio-card portfolio-card--empty">
+                    <p>No portfolio URL added yet. Add a link to make your profile stand out.</p>
+                  </div>
                 )}
               </div>
-            </div>
+            </section>
 
           </div>
 
@@ -492,4 +499,4 @@ function JobseekerDashboard() {
   );
 }
 
-export default JobseekerDashboard;
+export default JobSeekerDashboard;

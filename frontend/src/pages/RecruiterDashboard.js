@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import auth from "../Firebase/FirebaseConfig";
 import { signOut } from "firebase/auth";
-import "./JobseekerDashboard.css";
+import "./JobSeekerDashboard.css";
 
 function RecruiterDashboard() {
   const [userData, setUserData] = useState(null);
