@@ -737,3 +737,105 @@
   margin-top: 1rem;
   flex-wrap: wrap;
 }
+
+.dashboard-card--full {
+  width: 100%;
+}
+
+.resume-section {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 1.5rem;
+}
+
+.resume-upload-card,
+.portfolio-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 18px;
+  padding: 1.5rem;
+}
+
+.resume-upload-card h3,
+.portfolio-card h3 {
+  color: var(--text);
+  margin-bottom: 8px;
+}
+
+.resume-upload-card p,
+.portfolio-card p {
+  color: var(--text2);
+  margin-bottom: 1rem;
+}
+
+.resume-upload-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.resume-current-file {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  background: rgba(79,142,255,0.08);
+
+  border: 1px solid rgba(79,142,255,0.15);
+
+  padding: 1rem;
+  border-radius: 14px;
+}
+
+.resume-current-file__label {
+  display: block;
+  color: var(--text3);
+  font-size: 12px;
+  margin-bottom: 4px;
+}
+
+.resume-current-file h4 {
+  color: var(--text);
+}
+
+.resume-upload-zone {
+  min-height: 120px;
+
+  border: 2px dashed rgba(79,142,255,0.25);
+
+  border-radius: 16px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  color: var(--text2);
+
+  transition: all 0.3s ease;
+}
+
+.resume-upload-zone:hover {
+  border-color: var(--accent);
+  background: rgba(79,142,255,0.05);
+}
+
+.resume-view-btn,
+.portfolio-link {
+  text-decoration: none;
+
+  color: var(--accent);
+
+  font-weight: 600;
+}
+
+.resume-empty {
+  color: var(--text3);
+}
+
+@media (max-width: 900px) {
+  .resume-section {
+    grid-template-columns: 1fr;
+  }
+}

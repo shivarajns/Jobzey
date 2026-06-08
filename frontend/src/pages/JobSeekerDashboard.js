@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import auth from "../Firebase/FirebaseConfig";
 import { signOut } from "firebase/auth";
 import "./JobseekerDashboard.css";
+import { toast } from "react-toastify";
 
 function JobseekerDashboard() {
   const [userData, setUserData] = useState(null);
@@ -10,6 +11,8 @@ function JobseekerDashboard() {
   const [error, setError] = useState("");
   const navigate = useNavigate();
   const [userSkill, setuserSkill] = useState([]);
+  const [resumeFile, setResumeFile] = useState(null);
+  const [uploading, setUploading] = useState(false);
 
   useEffect(function () {
     fetchUserProfile();
@@ -19,6 +22,7 @@ function JobseekerDashboard() {
     if (userData?.userId) {
       fetchUserSkill(userData.userId);
     }
+    localStorage.setItem("userId", userData?.userId)
   }, [userData])
 
   // useEffect(() => {
@@ -96,6 +100,50 @@ function JobseekerDashboard() {
     return email.charAt(0).toUpperCase();
   }
 
+  async function handleResumeUpload() {
+    if (!resumeFile) {
+      toast.warn("Select Resume to Upload")
+      return;
+    }
+
+    try {
+      setUploading(true);
+
+      const token = localStorage.getItem("token");
+
+      const formData = new FormData();
+
+      formData.append("userId", userData.userId);
+      formData.append("file", resumeFile);
+
+      const response = await fetch(
+        "http://localhost:8080/upload/resume",
+        {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${token}`
+          },
+          body: formData
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Upload failed");
+      }
+
+      await fetchUserProfile();
+
+      setResumeFile(null);
+
+      toast.success("Resume uploaded successfully");
+    } catch (err) {
+      console.error(err);
+      toast.error("Resume upload failed")
+    } finally {
+      setUploading(false);
+    }
+  }
+
   if (loading) {
     return (
       <div className="dashboard-page">
@@ -149,7 +197,7 @@ function JobseekerDashboard() {
       </div>
 
       {/* Header */}
-      <header className="dashboard-header">
+      {/* <header className="dashboard-header">
         <div className="dashboard-header__container">
           <div className="dashboard-brand">
             <div className="dashboard-brand__icon">J</div>
@@ -174,7 +222,7 @@ function JobseekerDashboard() {
             </button>
           </div>
         </div>
-      </header>
+      </header> */}
 
       {/* Main Content */}
       <main className="dashboard-main">
@@ -205,6 +253,21 @@ function JobseekerDashboard() {
                   Open to work
                 </div>
               )}
+            </div>
+            <div className="dashboard-profile-actions">
+              <button
+                onClick={handleEdit}
+                className="dashboard-btn dashboard-btn--secondary"
+              >
+                Edit Profile
+              </button>
+
+              <button
+                onClick={handleLogout}
+                className="dashboard-btn dashboard-btn--logout"
+              >
+                Logout
+              </button>
             </div>
           </div>
 
@@ -305,15 +368,15 @@ function JobseekerDashboard() {
                 {Array.isArray(userSkill?.skills) && userSkill.skills.length > 0 ? (
                   userSkill.skills.map((skill) => (
                     <div key={skill.skillId}>
-                      <h2 style={{"fontSize":"20px"}}>{skill.skillName}</h2>
+                      <h2 style={{ "fontSize": "20px" }}>{skill.skillName}</h2>
                       <p
                         className={`skill-level ${skill.skillLevel?.toLowerCase().includes("beginner")
-                            ? "beginner"
-                            : skill.skillLevel?.toLowerCase().includes("intermediate")
-                              ? "intermediate"
-                              : skill.skillLevel?.toLowerCase().includes("advanced")
-                                ? "advanced"
-                                : ""
+                          ? "beginner"
+                          : skill.skillLevel?.toLowerCase().includes("intermediate")
+                            ? "intermediate"
+                            : skill.skillLevel?.toLowerCase().includes("advanced")
+                              ? "advanced"
+                              : ""
                           }`}
                       >
                         {skill.skillLevel}
@@ -330,59 +393,93 @@ function JobseekerDashboard() {
 
 
             {/* Links & Resources */}
-            <div className="dashboard-card">
-              <h2 className="dashboard-card__title">Links & Resources</h2>
-              <div className="dashboard-links">
-                {userData.portfolioUrl && (
-                  <a
-                    href={userData.portfolioUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="dashboard-link-btn"
-                  >
-                    <div className="dashboard-link-btn__icon">
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
-                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
-                      </svg>
-                    </div>
-                    <div className="dashboard-link-btn__content">
-                      <span className="dashboard-link-btn__label">Portfolio</span>
-                      <span className="dashboard-link-btn__url">View my work</span>
-                    </div>
-                    <svg className="dashboard-link-btn__arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <line x1="7" y1="17" x2="17" y2="7" />
-                      <polyline points="7 7 17 7 17 17" />
-                    </svg>
-                  </a>
-                )}
+            {/* Resume & Portfolio */}
+            <div className="dashboard-card dashboard-card--full">
+              <h2 className="dashboard-card__title">Resume & Portfolio</h2>
 
-                {userData.resumeUrl && (
-                  <a
-                    href={userData.resumeUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="dashboard-link-btn"
-                  >
-                    <div className="dashboard-link-btn__icon">
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-                        <polyline points="14 2 14 8 20 8" />
-                        <line x1="16" y1="13" x2="8" y2="13" />
-                        <line x1="16" y1="17" x2="8" y2="17" />
-                        <polyline points="10 9 9 9 8 9" />
-                      </svg>
+              <div className="resume-section">
+
+                <div className="resume-upload-card">
+                  <div className="resume-upload-card__header">
+                    <div>
+                      <h3>Resume</h3>
+                      <p>Upload your latest resume for recruiters.</p>
                     </div>
-                    <div className="dashboard-link-btn__content">
-                      <span className="dashboard-link-btn__label">Resume</span>
-                      <span className="dashboard-link-btn__url">Download PDF</span>
-                    </div>
-                    <svg className="dashboard-link-btn__arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <line x1="7" y1="17" x2="17" y2="7" />
-                      <polyline points="7 7 17 7 17 17" />
-                    </svg>
-                  </a>
+                  </div>
+
+                  <div className="resume-upload-body">
+
+                    {userData.resumeFileName ? (
+                      <div className="resume-current-file">
+                        <div>
+                          <span className="resume-current-file__label">
+                            Current Resume
+                          </span>
+
+                          <h4>{userData.resumeFileName}</h4>
+                        </div>
+
+                        <a
+                          href={userData.resumeUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="resume-view-btn"
+                        >
+                          View Resume
+                        </a>
+                      </div>
+                    ) : (
+                      <p className="resume-empty">
+                        No resume uploaded yet
+                      </p>
+                    )}
+
+                    <input
+                      type="file"
+                      id="resume-upload"
+                      accept=".pdf,.doc,.docx"
+                      onChange={(e) => setResumeFile(e.target.files[0])}
+                      hidden
+                    />
+
+                    <label
+                      htmlFor="resume-upload"
+                      className="resume-upload-zone"
+                    >
+                      <span>
+                        {resumeFile
+                          ? resumeFile.name
+                          : "Choose Resume"}
+                      </span>
+                    </label>
+
+                    <button
+                      className="dashboard-btn dashboard-btn--primary"
+                      onClick={handleResumeUpload}
+                      disabled={uploading}
+                    >
+                      {uploading ? "Uploading..." : "Upload Resume"}
+                    </button>
+                  </div>
+                </div>
+
+                {userData.portfolioUrl && (
+                  <div className="portfolio-card">
+                    <h3>Portfolio</h3>
+
+                    <p>
+                      Showcase your projects and professional work.
+                    </p>
+
+                    <a
+                      href={userData.portfolioUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="portfolio-link"
+                    >
+                      Visit Portfolio →
+                    </a>
+                  </div>
                 )}
               </div>
             </div>
