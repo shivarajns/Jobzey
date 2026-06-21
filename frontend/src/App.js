@@ -17,6 +17,7 @@ import Jobs from "./pages/Jobs";
 import Applyjob from "./pages/ApplyJobs";
 import JobPost from "./pages/JobPost";
 import AppliedJobs from "./pages/AppliedJobs";
+import ViewPostedJobs from "./pages/ViewPostedJobs";
 
 function App() {
   return (
@@ -30,7 +31,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/verify-email" element={<VerifyEmail />} />
           <Route path="/recruiter-signup" element={<RecruiterSignup />} />
-          
+
           {/* JobSeeker Dashboard */}
           <Route
             path="/jobseeker/dashboard"
@@ -40,7 +41,7 @@ function App() {
               </ProtectedRoute>
             }
           />
-          
+
           {/* Recruiter Dashboard */}
           <Route
             path="/recruiter/dashboard"
@@ -72,19 +73,19 @@ function App() {
           <Route
             path="/jobs"
             element={
-              
-                <Jobs/>
-              
+
+              <Jobs />
+
             }
           />
 
           <Route
             path="/apply/:jobId"
             element={
-                <ProtectedRoute>
-                  <Applyjob/>
-                </ProtectedRoute>
-              
+              <ProtectedRoute>
+                <Applyjob />
+              </ProtectedRoute>
+
             }
           />
 
@@ -92,25 +93,34 @@ function App() {
             path="/recruiter/job/create"
             element={
               <ProtectedRoute>
-                <JobPost/>
+                <JobPost />
               </ProtectedRoute>
             }
           />
 
-          <Route 
+          <Route
             path="/applied-jobs"
             element={
               <ProtectedRoute>
-                <AppliedJobs/>
+                <AppliedJobs />
               </ProtectedRoute>
-            }          
+            }
           />
-        
-          
+
+          <Route
+            path="/view-posted-jobs"
+            element={
+              <ProtectedRoute>
+                <ViewPostedJobs />
+              </ProtectedRoute>
+            }
+
+          />
+
           {/* Old dashboard route - redirect based on role */}
           <Route path="/dashboard" element={<Navigate to="/home" replace />} />
-          
-          
+
+
           <Route path="*" element={<Navigate to="/home" replace />} />
         </Routes>
       </BrowserRouter>

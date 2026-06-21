@@ -67,7 +67,9 @@ function Navbar() {
                 </Link>
             </li>
             <li>
-              <Link to="/applied-jobs">Applied Jobs</Link>
+              <Link to={localStorage.getItem("userRole") === "recruiter" ? "/view-posted-jobs" :"/applied-jobs"}>
+              {localStorage.getItem("userRole") === "recruiter" ? "View Posted Jobs" : "View Applied Jobs"}
+              </Link>
             </li>
             <li>
               <Link to={getDashboardPath()}
