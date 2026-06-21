@@ -24,4 +24,5 @@ public interface JobApplicationRepository extends JpaRepository<JobApplicationMo
             """
     )
     List<JobApplicationModel> findByJobseekerProfile_Id (int jobseekerId);
+
 }
