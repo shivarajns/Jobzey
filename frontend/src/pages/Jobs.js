@@ -19,7 +19,7 @@ function Jobs() {
 
     const fetchJobData = async () => {
         try {
-            const response = await fetch("http://localhost:8080/api/jobs/get", {
+            const response = await fetch("https://jobzey.onrender.com/api/jobs/get", {
                 method: "GET",
             })
             const data = await response.json();

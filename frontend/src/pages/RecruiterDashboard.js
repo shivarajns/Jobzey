@@ -23,7 +23,7 @@ function RecruiterDashboard() {
         return;
       }
 
-      const response = await fetch("http://localhost:8080/api/dashboard", {
+      const response = await fetch("https://jobzey.onrender.com/api/dashboard", {
         headers: {
           Authorization: `Bearer ${token}`,
         },

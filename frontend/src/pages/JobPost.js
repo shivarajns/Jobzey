@@ -34,7 +34,7 @@ function JobPost() {
     async function fetchJobCategories() {
 
         try {
-            const response = await fetch("http://localhost:8080/api/jobs/categories", {
+            const response = await fetch("https://jobzey.onrender.com/api/jobs/categories", {
                 method: "GET"
             })
 
@@ -65,7 +65,7 @@ function JobPost() {
                 ...form
             }
 
-            const response = await fetch("http://localhost:8080/recruiter/job/create", {
+            const response = await fetch("https://jobzey.onrender.com/recruiter/job/create", {
                 method: "PUT",
                 headers: {
                     "Authorization": `Bearer ${token}`,

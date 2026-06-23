@@ -21,7 +21,7 @@ function Applyjob() {
 
     const fetchJobDetails = async () => {
         try {
-            const response = await fetch(`http://localhost:8080/api/jobs/${jobId}`, {
+            const response = await fetch(`https://jobzey.onrender.com/api/jobs/${jobId}`, {
                 method: "GET",
             })
             const data = await response.json();
@@ -58,7 +58,7 @@ function Applyjob() {
             }
 
 
-            const response = await fetch("http://localhost:8080/api/dashboard", {
+            const response = await fetch("https://jobzey.onrender.com/api/dashboard", {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
@@ -97,7 +97,7 @@ function Applyjob() {
                 return;
             }
 
-            const response = await fetch("http://localhost:8080/api/job/apply", {
+            const response = await fetch("https://jobzey.onrender.com/api/job/apply", {
                 method: "PUT",
                 headers: {
                     Authorization: `Bearer ${token}`,

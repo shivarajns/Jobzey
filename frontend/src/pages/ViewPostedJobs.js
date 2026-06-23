@@ -38,7 +38,7 @@ const ViewPostedJobs = () => {
             const token = localStorage.getItem("token");
 
             const postedJobsResponse = await fetch(
-                `http://localhost:8080/api/recruiter/get/posted/jobs/${userId}`,
+                `https://jobzey.onrender.com/api/recruiter/get/posted/jobs/${userId}`,
                 {
                     method: "GET",
                     headers: {
@@ -66,7 +66,7 @@ const ViewPostedJobs = () => {
             const jobRequests = postedJobs.map(async (item) => {
                 try {
                     const response = await fetch(
-                        `http://localhost:8080/api/jobs/${item.jobId}`,
+                        `https://jobzey.onrender.com/api/jobs/${item.jobId}`,
                         {
                             method: "GET",
                             headers: {

@@ -22,7 +22,7 @@ function JobSeekerDashboard() {
         return;
       }
 
-      const response = await fetch("http://localhost:8080/api/dashboard", {
+      const response = await fetch("https://jobzey.onrender.com/api/dashboard", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -61,7 +61,7 @@ function JobSeekerDashboard() {
   const fetchUserSkill = async (userId) => {
     try {
       const token = localStorage.getItem("token")
-      const response = await fetch(`http://localhost:8080/api/dashboard/skills/get?userId=${userId}`,
+      const response = await fetch(`https://jobzey.onrender.com/api/dashboard/skills/get?userId=${userId}`,
         {
           method: "GET",
           headers: {
@@ -117,7 +117,7 @@ function JobSeekerDashboard() {
       formData.append("file", resumeFile);
 
       const response = await fetch(
-        "http://localhost:8080/upload/resume",
+        "https://jobzey.onrender.com/upload/resume",
         {
           method: "POST",
           headers: {

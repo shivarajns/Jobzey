@@ -15,7 +15,7 @@ function JobSection() {
         try {
             setLoading(true);
             setError("");
-            const response = await fetch("http://localhost:8080/api/jobs/get/suggested", {
+            const response = await fetch("https://jobzey.onrender.com/api/jobs/get/suggested", {
                 method: "GET",
             });
             const data = await response.json();

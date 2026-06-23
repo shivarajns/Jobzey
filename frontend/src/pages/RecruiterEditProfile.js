@@ -26,7 +26,7 @@ function RecruiterEditProfile() {
     async function fetchProfile() {
         const token = localStorage.getItem("token");
 
-        const res = await fetch("http://localhost:8080/api/dashboard", {
+        const res = await fetch("https://jobzey.onrender.com/api/dashboard", {
             headers: { Authorization: `Bearer ${token}` }
         });
 
@@ -61,7 +61,7 @@ function RecruiterEditProfile() {
             ...formData
         };
 
-        await fetch("http://localhost:8080/api/dashboard/edit/recruiter", {
+        await fetch("https://jobzey.onrender.com/api/dashboard/edit/recruiter", {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",

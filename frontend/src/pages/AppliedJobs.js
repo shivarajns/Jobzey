@@ -16,7 +16,7 @@ function AppliedJobs() {
     async function fetchAppliedJobs() {
         try {
             const token = localStorage.getItem("token");
-            const response = await fetch(`http://localhost:8080/api/jobseeker/applied/${userId}`, {
+            const response = await fetch(`https://jobzey.onrender.com/api/jobseeker/applied/${userId}`, {
                 method: "GET",
                 headers: {
                     Authorization: `Bearer ${token}`

@@ -31,7 +31,7 @@ function JobseekerEditProfile() {
   async function fetchProfile() {
     const token = localStorage.getItem("token");
 
-    const res = await fetch("http://localhost:8080/api/dashboard", {
+    const res = await fetch("https://jobzey.onrender.com/api/dashboard", {
       headers: { Authorization: `Bearer ${token}` }
     });
 
@@ -91,7 +91,7 @@ function JobseekerEditProfile() {
       openToWork: formData.openToWork === "true"
     };
 
-    await fetch("http://localhost:8080/api/dashboard/edit/jobseeker", {
+    await fetch("https://jobzey.onrender.com/api/dashboard/edit/jobseeker", {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
