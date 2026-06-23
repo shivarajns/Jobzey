@@ -1,11 +1,5 @@
 package com.jobzey.backend.AppliedJobSystem.DTO;
 
-import com.jobzey.backend.JobListingSystem.Model.Jobs;
-import com.jobzey.backend.model.JobseekerProfile;
-import jakarta.persistence.Column;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import lombok.*;
 
 import java.time.LocalDate;

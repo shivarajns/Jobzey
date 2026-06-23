@@ -13,6 +13,8 @@ import com.jobzey.backend.repository.JobseekerProfileRepository;
 import com.jobzey.backend.repository.RecruiterProfileRepository;
 import com.jobzey.backend.repository.UserRepository;
 import jakarta.transaction.Transactional;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +22,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Service
+@Getter
+@Setter
 public class AuthService {
 
     @Autowired

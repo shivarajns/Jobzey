@@ -4,6 +4,8 @@ import com.jobzey.backend.AuthenticationSystem.dto.AuthResponse;
 import com.jobzey.backend.AuthenticationSystem.dto.JobseekerRegisterRequestDto;
 import com.jobzey.backend.AuthenticationSystem.dto.RecruiterRegisterRequestDto;
 import com.jobzey.backend.AuthenticationSystem.service.AuthService;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,6 +13,8 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/auth")
+@Getter
+@Setter
 public class AuthController {
 
     @Autowired
