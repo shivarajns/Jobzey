@@ -21,11 +21,11 @@ public class ViewPostedJobsController {
         this.service = service;
     }
 
-    @GetMapping("/posted/jobs/{recruiterId}")
+    @GetMapping("/posted/jobs/{userID}")
     public ResponseEntity<List<ViewPostedJobsResponseDTO>> getPostedJobs(
-            @PathVariable int recruiterId
+            @PathVariable int userID
     ) {
-        List<ViewPostedJobsResponseDTO> jobs = service.getPostedJobs(recruiterId);
+        List<ViewPostedJobsResponseDTO> jobs = service.getPostedJobs(userID);
 
         return ResponseEntity.ok(jobs);
     }
